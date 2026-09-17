@@ -224,15 +224,20 @@ img{max-width:100%;display:block;}a{text-decoration:none;color:inherit;}
   <div class="wrap">
     <div class="gal-filters">
       <div class="gal-tabs">
-        <button class="gt on" onclick="gcat(this,'sliding')">Sliding</button>
+        <button class="gt on" onclick="gcat(this,'all')">All Products</button>
+        <button class="gt" onclick="gcat(this,'sliding')">Sliding</button>
         <button class="gt" onclick="gcat(this,'doors')">Doors</button>
-        <button class="gt" onclick="gcat(this,'windows')">Windows</button>
         <button class="gt" onclick="gcat(this,'mirrors')">Mirrors</button>
+        <button class="gt" onclick="gcat(this,'windows')">Windows</button>
         <button class="gt" onclick="gcat(this,'smart')">Smart Glass</button>
       </div>
-    </div>
+
+      
 
     <div class="gal-grid" id="gg">
+      <!-- SLIDING -->
+      <div class="gi-lb"><span>Invisible Door 0070</span></div></div>
+      <div class="gi-lb"><span>Mirror 0094</span></div></div>
       <div class="gi" data-c="mirrors" data-s=""><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Mirror_0096.jpg" alt="Mirror" loading="lazy"/><div class="gi-ov"></div><div class="gi-lb"><span>Mirror 0096</span></div></div>
       <div class="gi" data-c="mirrors" data-s=""><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Mirror_4746%20copy.jpg" alt="Mirror" loading="lazy"/><div class="gi-ov"></div><div class="gi-lb"><span>Mirror 4746</span></div></div>
       <div class="gi" data-c="mirrors" data-s=""><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Mirror_4747%20copy.jpg" alt="Mirror" loading="lazy"/><div class="gi-ov"></div><div class="gi-lb"><span>Mirror 4747</span></div></div>
@@ -313,11 +318,17 @@ const hbg=document.getElementById('hbg'),mob=document.getElementById('mob');
 hbg.addEventListener('click',()=>{hbg.classList.toggle('op');mob.classList.toggle('op');});
 
 // Gallery filter
-let activeCat='sliding';
+let activeCat='all';
 const items=[...document.querySelectorAll('.gi')];
 
 function visible(){
-  return items.filter(it=>it.dataset.c===activeCat);
+  return items.filter(it=>{
+    if(activeCat==='all') return true;
+    return it.dataset.c===activeCat;
+  });
+}
+    return true;
+  });
 }
 
 function render(){
@@ -333,6 +344,10 @@ function gcat(btn,cat){
   activeCat=cat;
   render();
 }
+  render();
+}
+
+
 
 render();
 
