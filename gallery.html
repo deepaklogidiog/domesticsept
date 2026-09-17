@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Gallery – Domestic Glass</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--black:#0A0A0A;--white:#FFFFFF;--g50:#F8F8F8;--g100:#F2F2F2;--g200:#E4E4E4;--g400:#9A9A9A;--g600:#5A5A5A;--g800:#2A2A2A;--teal:#458895;--teal-d:#336670;--fm:'Montserrat',system-ui,sans-serif;--fb:'DM Sans',system-ui,sans-serif;}
+html{scroll-behavior:smooth;}body{font-family:var(--fb);font-size:16px;line-height:1.6;color:var(--black);background:var(--white);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+img{max-width:100%;display:block;}a{text-decoration:none;color:inherit;}
+.rev{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease;}.rev.on{opacity:1;transform:none;}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
+.wrap{max-width:1200px;margin:0 auto;padding:0 48px;}
+.eyebrow-w{font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.45);}
+.teal-bar{display:block;width:36px;height:2px;background:var(--teal);margin-bottom:18px;}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--fb);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:14px 28px;transition:all .22s;cursor:pointer;border:none;}
+.btn-blk{background:var(--black);color:var(--white);}.btn-blk:hover{background:var(--teal);}
+/* HEADER */
+#hdr{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--g200);transition:box-shadow .3s;}
+#hdr.sc{box-shadow:0 4px 24px rgba(0,0,0,.07);}
+.nav{max-width:1200px;margin:0 auto;padding:0 48px;height:68px;display:flex;align-items:center;justify-content:space-between;gap:20px;}
+.logo img{height:40px;width:auto;display:block;}
+.logo-fb{font-family:var(--fm);font-size:16px;font-weight:600;color:var(--black);display:none;letter-spacing:.02em;}.logo-fb span{color:var(--teal);}
+.nl{display:flex;align-items:center;list-style:none;}
+.nl>li>a{font-size:12.5px;font-weight:500;letter-spacing:.04em;color:var(--g600);padding:8px 14px;display:flex;align-items:center;gap:4px;transition:color .2s;}
+.nl>li>a:hover,.nl>li.act>a{color:var(--black);}
+.drop{position:relative;}.drop>a svg{transition:transform .2s;}.drop:hover>a svg{transform:rotate(180deg);}
+.dd{position:absolute;top:calc(100% + 8px);left:0;background:var(--white);border:1px solid var(--g200);min-width:210px;padding:8px 0;box-shadow:0 16px 40px rgba(0,0,0,.10);opacity:0;visibility:hidden;transform:translateY(-6px);transition:all .2s;list-style:none;}
+.drop:hover .dd{opacity:1;visibility:visible;transform:none;}
+.dd li a{display:block;padding:10px 18px;font-size:12.5px;color:var(--g600);transition:background .15s,color .15s;}.dd li a:hover{background:var(--g50);color:var(--teal);}
+.nr{display:flex;align-items:center;gap:14px;flex-shrink:0;}
+.hbg{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
+.hbg span{display:block;width:22px;height:1.5px;background:var(--black);transition:transform .25s,opacity .25s;}
+.hbg.op span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}.hbg.op span:nth-child(2){opacity:0;}.hbg.op span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+.mob{display:none;flex-direction:column;background:var(--white);border-top:1px solid var(--g200);padding:16px 24px 24px;}
+.mob.op{display:flex;}.mob a{font-size:15px;color:var(--g800);padding:13px 0;border-bottom:1px solid var(--g100);transition:color .2s;}
+.mob a:last-child{border-bottom:none;}.mob a:hover{color:var(--teal);}
+.mob-cta{margin-top:16px;background:var(--black);color:var(--white)!important;text-align:center;padding:13px!important;border-bottom:none!important;font-weight:600;font-size:11px!important;text-transform:uppercase;letter-spacing:.08em;}
+
+
+
+/* ===== INFINITE MARQUEE STRIPS ===== */
+/* Two rows running in opposite directions, tight, no gaps */
+.marquee-gallery{background:var(--white);padding-top:100px;overflow:hidden;}
+.mg-row{display:flex;gap:0;overflow:hidden;margin-bottom:3px;}
+.mg-row:last-child{margin-bottom:0;}
+.mg-track{display:flex;gap:3px;animation:mgLeft 40s linear infinite;width:max-content;flex-shrink:0;}
+.mg-row.rev-dir .mg-track{animation:mgRight 40s linear infinite;}
+@keyframes mgLeft{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+@keyframes mgRight{from{transform:translateX(-50%);}to{transform:translateX(0);}}
+.mg-img{flex-shrink:0;height:220px;width:auto;object-fit:cover;display:block;cursor:pointer;transition:opacity .3s;}
+.mg-img:hover{opacity:.85;}
+
+/* ===== FILTER + GRID ===== */
+.gal-body{padding:0 0 80px;background:var(--white);}
+.gal-filters{padding:48px 0 0;}
+.gal-tabs{display:flex;border-bottom:2px solid var(--g200);overflow-x:auto;-webkit-overflow-scrolling:touch;margin-bottom:0;}
+.gt{font-family:var(--fm);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--g400);padding:14px 24px;cursor:pointer;background:none;border:none;border-bottom:2px solid transparent;margin-bottom:-2px;white-space:nowrap;transition:color .2s,border-color .2s;}
+.gt.on,.gt:hover{color:var(--black);border-bottom-color:var(--teal);}
+
+/* Sub filters */
+
+
+
+
+
+/* Masonry-style grid: 4 cols, items fill naturally */
+.gal-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:3px;
+}
+.gi{position:relative;overflow:hidden;cursor:pointer;display:block;aspect-ratio:4/3;}
+.gi img{width:100%;display:block;transition:transform .5s ease;}
+.gi:hover img{transform:scale(1.04);}
+.gi-ov{position:absolute;inset:0;background:rgba(10,10,10,0);transition:background .3s;}
+.gi:hover .gi-ov{background:rgba(10,10,10,.32);}
+.gi-lb{position:absolute;bottom:0;left:0;right:0;padding:14px 18px;background:linear-gradient(to top,rgba(0,0,0,.72) 0%,transparent 100%);opacity:0;transform:translateY(4px);transition:opacity .3s,transform .3s;}
+.gi:hover .gi-lb{opacity:1;transform:none;}
+.gi-lb span{font-size:11px;font-weight:500;color:var(--white);letter-spacing:.04em;}
+
+/* Empty state */
+.gal-empty{padding:64px;text-align:center;color:var(--g400);font-size:14px;display:none;}
+.gal-empty.on{display:block;}
+
+/* ===== LIGHTBOX ===== */
+.lb{position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:9999;display:none;align-items:center;justify-content:center;}
+.lb.on{display:flex;}
+.lb-img{max-width:88vw;max-height:88vh;object-fit:contain;}
+.lb-x{position:fixed;top:16px;right:20px;background:none;border:none;color:rgba(255,255,255,.7);font-size:32px;cursor:pointer;line-height:1;padding:4px;}
+.lb-x:hover{color:var(--white);}
+.lb-p,.lb-n{position:fixed;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);color:var(--white);font-size:22px;width:44px;height:44px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;}
+.lb-p{left:12px;}.lb-n{right:12px;}
+.lb-p:hover,.lb-n:hover{background:var(--teal);}
+.lb-ct{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);font-size:11px;color:rgba(255,255,255,.4);letter-spacing:.1em;}
+
+/* FOOTER */
+#ft{background:var(--black);padding:72px 0 0;}
+.ftg{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:52px;padding-bottom:52px;border-bottom:1px solid rgba(255,255,255,.07);}
+.fli{height:38px;width:auto;display:block;margin-bottom:18px;opacity:.85;}
+.ftag{font-size:13px;line-height:1.65;color:rgba(255,255,255,.38);max-width:240px;margin-bottom:24px;}
+.fc h4{font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.22);margin-bottom:18px;}
+.fc ul{list-style:none;}.fc ul li{margin-bottom:9px;}.fc ul li a{font-size:13px;color:rgba(255,255,255,.42);transition:color .2s;}.fc ul li a:hover{color:var(--teal);}
+.fci{display:flex;flex-direction:column;gap:9px;}.fca{font-size:13px;color:rgba(255,255,255,.42);transition:color .2s;}.fca:hover{color:var(--teal);}
+.fbb{padding:22px 0;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;}
+.fbcp{font-size:11px;color:rgba(255,255,255,.18);}
+.fbl{display:flex;gap:18px;}.fbl a{font-size:11px;color:rgba(255,255,255,.18);transition:color .2s;}.fbl a:hover{color:var(--teal);}
+
+/* RESPONSIVE */
+@media(max-width:1024px){.gal-grid{grid-template-columns:repeat(3,1fr);}.ftg{grid-template-columns:1fr 1fr;}}
+@media(max-width:900px){.nl,.nr .btn-blk{display:none;}.hbg{display:flex;}.wrap,.nav{padding-left:24px;padding-right:24px;}.gal-grid{grid-template-columns:repeat(3,1fr);}.mg-img{height:160px;}}
+@media(max-width:640px){.wrap,.nav{padding-left:18px;padding-right:18px;}.gal-grid{grid-template-columns:repeat(2,1fr);}.mg-img{height:120px;}.gal-tabs{overflow-x:auto;}.ftg{grid-template-columns:1fr;}.fbb{flex-direction:column;align-items:flex-start;}}
+.wa-fab{position:fixed;bottom:28px;right:28px;z-index:8000;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);transition:transform .22s,box-shadow .22s;text-decoration:none;}
+.wa-fab:hover{transform:scale(1.1);box-shadow:0 6px 28px rgba(37,211,102,.55);}
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <div class="nav">
+    <a href="index.html" class="logo">
+      <img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Domestic_glass_Logo__1_.png" alt="Domestic Glass" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+      <span class="logo-fb">Domestic <span>Glass</span></span>
+    </a>
+    <ul class="nl">
+      <li><a href="index.html">Home</a></li>
+      <li class="drop">
+        <a href="#">Solutions <svg width="10" height="10" fill="none" viewBox="0 0 10 10"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
+        <ul class="dd">
+          <li><a href="windows-doors.html">Windows</a></li>
+          <li><a href="railings.html">Railings</a></li>
+          <li><a href="partitions.html">Partitions and Doors</a></li>
+          <li><a href="shower-cubicles.html">Shower Cubicles</a></li>
+          <li><a href="mirrors.html">Mirrors</a></li>
+        </ul>
+      </li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="architects.html">Architects</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nr">
+      <a href="contact.html" class="btn btn-blk" style="padding:9px 18px;font-size:11px;">Book a Visit</a>
+    </div>
+    <button class="hbg" id="hbg"><span></span><span></span><span></span></button>
+  </div>
+  <nav class="mob" id="mob">
+    <a href="index.html">Home</a>
+    <a href="windows-doors.html">Windows</a>
+    <a href="railings.html">Railings</a>
+    <a href="partitions.html">Partitions and Doors</a>
+    <a href="shower-cubicles.html">Shower Cubicles</a>
+    <a href="mirrors.html">Mirrors</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="about.html">About Us</a>
+    <a href="architects.html">Architects</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="mob-cta">Book a Site Visit</a>
+  </nav>
+</header>
+
+
+
+<!-- INFINITE MARQUEE: top showcase strip -->
+<!-- MARQUEE -->
+<div class="marquee-gallery">
+  <div class="mg-row">
+    <div class="mg-track">
+      <img class="mg-img" src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Mirrors/Backlit%20Mirrors/Halo-Backlit-Mirror.jpg" alt="" loading="lazy"/>
+      <img class="mg-img" src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Partitions%20%26%20Doors/Doors/Slim-Frame-Glass-Door-Black-01.jpg" alt="" loading="lazy"/>
+      <img class="mg-img" src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Shower%20Cubicles/Framed%20Shower%20Cubicles/90-Degree-Black-Framed-Shower-Cubicle-02.jpg" alt="" loading="lazy"/>
+      <img class="mg-img" src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Railings/Staircase/Staircase-Glass-Railing-Wood-Handrail-01.jpg" alt="" loading="lazy"/>
+      <img class="mg-img" src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Mirrors/LED%20Mirrors/Aureo-LED-Mirror.jpg" alt="" loading="lazy"/>
+      <img class="mg-img" src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Partitions%20%26%20Doors/Fixed%20Partitions/Clear-Glass-Fixed-Partition-Black-01.jpg" alt="" loading="lazy"/>
+      <img class="mg-img" src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Windows/Window-D40.JPG" alt="" loading="lazy"/>
+      <img class="mg-img" src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Mirrors/Framed%20Mirrors/Luna-Framed-Mirror.jpg" alt="" loading="lazy"/>
+      <img class="mg-img" src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Partitions%20%26%20Doors/Doors/Designer-Grid-Double-Door-Gold-01.jpg" alt="" loading="lazy"/>
+      <img class="mg-img" src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Shower%20Cubicles/Framed%20Shower%20Cubicles/T-Shaped-Gold-Framed-Shower-Cubicle-01.jpg" alt="" loading="lazy"/>
+      <img class="mg-img" src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Mirrors/Backlit%20Mirrors/Halo-Backlit-Mirror.jpg" alt="" loading="lazy"/>
+      <img class="mg-img" src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Partitions%20%26%20Doors/Doors/Slim-Frame-Glass-Door-Black-01.jpg" alt="" loading="lazy"/>
+      <img class="mg-img" src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Shower%20Cubicles/Framed%20Shower%20Cubicles/90-Degree-Black-Framed-Shower-Cubicle-02.jpg" alt="" loading="lazy"/>
+      <img class="mg-img" src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Railings/Staircase/Staircase-Glass-Railing-Wood-Handrail-01.jpg" alt="" loading="lazy"/>
+      <img class="mg-img" src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Mirrors/LED%20Mirrors/Aureo-LED-Mirror.jpg" alt="" loading="lazy"/>
+      <img class="mg-img" src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Partitions%20%26%20Doors/Fixed%20Partitions/Clear-Glass-Fixed-Partition-Black-01.jpg" alt="" loading="lazy"/>
+      <img class="mg-img" src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Windows/Window-D40.JPG" alt="" loading="lazy"/>
+      <img class="mg-img" src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Mirrors/Framed%20Mirrors/Luna-Framed-Mirror.jpg" alt="" loading="lazy"/>
+      <img class="mg-img" src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Partitions%20%26%20Doors/Doors/Designer-Grid-Double-Door-Gold-01.jpg" alt="" loading="lazy"/>
+      <img class="mg-img" src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Shower%20Cubicles/Framed%20Shower%20Cubicles/T-Shaped-Gold-Framed-Shower-Cubicle-01.jpg" alt="" loading="lazy"/>
+    </div>
+  </div>
+  <div class="mg-row rev-dir">
+    <div class="mg-track">
+      <img class="mg-img" src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Mirrors/Plain%20Mirrors/Horizon-Mirror.jpg" alt="" loading="lazy"/>
+      <img class="mg-img" src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Railings/Balcony/Glass-Railing-Wood-Top-Rail-01.jpg" alt="" loading="lazy"/>
+      <img class="mg-img" src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Partitions%20%26%20Doors/Sliding%20Partitions/Telescopic-Sliding-Clear-Glass-Midnight-Black-01.jpg" alt="" loading="lazy"/>
+      <img class="mg-img" src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Shower%20Cubicles/Frameless%20Shower%20Cubicles/90-Degree-Chrome-Frameless-Shower-Cubicle-01.jpg" alt="" loading="lazy"/>
+      <img class="mg-img" src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Mirrors/LED%20Mirrors/Crescent-LED-Mirror.jpg" alt="" loading="lazy"/>
+      <img class="mg-img" src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Partitions%20%26%20Doors/Doors/Slim-Frame-Double-Door-Black-01.jpg" alt="" loading="lazy"/>
+      <img class="mg-img" src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Windows/Window-GALENEGTi.JPG" alt="" loading="lazy"/>
+      <img class="mg-img" src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Mirrors/Framed%20Mirrors/Orbit-Framed-Mirror.jpg" alt="" loading="lazy"/>
+      <img class="mg-img" src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Partitions%20%26%20Doors/Smart%20Glass/Smart-Glass-Office-Cabin.jpg" alt="" loading="lazy"/>
+      <img class="mg-img" src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Railings/Staircase/Frameless-Staircase-Glass-Railing-01.jpg" alt="" loading="lazy"/>
+      <img class="mg-img" src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Mirrors/Plain%20Mirrors/Horizon-Mirror.jpg" alt="" loading="lazy"/>
+      <img class="mg-img" src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Railings/Balcony/Glass-Railing-Wood-Top-Rail-01.jpg" alt="" loading="lazy"/>
+      <img class="mg-img" src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Partitions%20%26%20Doors/Sliding%20Partitions/Telescopic-Sliding-Clear-Glass-Midnight-Black-01.jpg" alt="" loading="lazy"/>
+      <img class="mg-img" src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Shower%20Cubicles/Frameless%20Shower%20Cubicles/90-Degree-Chrome-Frameless-Shower-Cubicle-01.jpg" alt="" loading="lazy"/>
+      <img class="mg-img" src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Mirrors/LED%20Mirrors/Crescent-LED-Mirror.jpg" alt="" loading="lazy"/>
+      <img class="mg-img" src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Partitions%20%26%20Doors/Doors/Slim-Frame-Double-Door-Black-01.jpg" alt="" loading="lazy"/>
+      <img class="mg-img" src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Windows/Window-GALENEGTi.JPG" alt="" loading="lazy"/>
+      <img class="mg-img" src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Mirrors/Framed%20Mirrors/Orbit-Framed-Mirror.jpg" alt="" loading="lazy"/>
+      <img class="mg-img" src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Partitions%20%26%20Doors/Smart%20Glass/Smart-Glass-Office-Cabin.jpg" alt="" loading="lazy"/>
+      <img class="mg-img" src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Railings/Staircase/Frameless-Staircase-Glass-Railing-01.jpg" alt="" loading="lazy"/>
+    </div>
+  </div>
+</div>
+
+<!-- FILTER + MASONRY GRID -->
+<section class="gal-body">
+  <div class="wrap">
+    <div class="gal-filters">
+      <div class="gal-tabs">
+        <button class="gt on" onclick="gcat(this,'sliding')">Sliding</button>
+        <button class="gt" onclick="gcat(this,'doors')">Doors</button>
+        <button class="gt" onclick="gcat(this,'windows')">Windows</button>
+        <button class="gt" onclick="gcat(this,'mirrors')">Mirrors</button>
+        <button class="gt" onclick="gcat(this,'smart')">Smart Glass</button>
+      </div>
+    </div>
+
+    <div class="gal-grid" id="gg">
+      <div class="gi" data-c="mirrors" data-s=""><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Mirror_0096.jpg" alt="Mirror" loading="lazy"/><div class="gi-ov"></div><div class="gi-lb"><span>Mirror 0096</span></div></div>
+      <div class="gi" data-c="mirrors" data-s=""><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Mirror_4746%20copy.jpg" alt="Mirror" loading="lazy"/><div class="gi-ov"></div><div class="gi-lb"><span>Mirror 4746</span></div></div>
+      <div class="gi" data-c="mirrors" data-s=""><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Mirror_4747%20copy.jpg" alt="Mirror" loading="lazy"/><div class="gi-ov"></div><div class="gi-lb"><span>Mirror 4747</span></div></div>
+
+      <!-- WINDOWS: D40 -->
+      <div class="gi" data-c="windows" data-s="all-w d40"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/D40_0136.jpg" alt="D40" loading="lazy"/><div class="gi-ov"></div><div class="gi-lb"><span>D40 Window 0136</span></div></div>
+      <div class="gi" data-c="windows" data-s="all-w d40"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/D40_0137.jpg" alt="D40" loading="lazy"/><div class="gi-ov"></div><div class="gi-lb"><span>D40 Window 0137</span></div></div>
+      <div class="gi" data-c="windows" data-s="all-w d40"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/D40_0138.jpg" alt="D40" loading="lazy"/><div class="gi-ov"></div><div class="gi-lb"><span>D40 Window 0138</span></div></div>
+      <div class="gi" data-c="windows" data-s="all-w d40"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/D40_0139.jpg" alt="D40" loading="lazy"/><div class="gi-ov"></div><div class="gi-lb"><span>D40 Window 0139</span></div></div>
+      <div class="gi" data-c="windows" data-s="all-w d40"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/D40_0140.jpg" alt="D40" loading="lazy"/><div class="gi-ov"></div><div class="gi-lb"><span>D40 Window 0140</span></div></div>
+      <div class="gi" data-c="windows" data-s="all-w d40"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/D40_0141.jpg" alt="D40" loading="lazy"/><div class="gi-ov"></div><div class="gi-lb"><span>D40 Window 0141</span></div></div>
+      <div class="gi" data-c="windows" data-s="all-w d40"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/D40_8359.jpg" alt="D40" loading="lazy"/><div class="gi-ov"></div><div class="gi-lb"><span>D40 Window 8359</span></div></div>
+      <!-- WINDOWS: Galene -->
+      <div class="gi" data-c="windows" data-s="all-w gal"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/GALENEGTi_0035.jpg" alt="Galene GTi" loading="lazy"/><div class="gi-ov"></div><div class="gi-lb"><span>Galene GTi 0035</span></div></div>
+      <div class="gi" data-c="windows" data-s="all-w gal"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/GALENEGTi_0036.jpg" alt="Galene GTi" loading="lazy"/><div class="gi-ov"></div><div class="gi-lb"><span>Galene GTi 0036</span></div></div>
+      <div class="gi" data-c="windows" data-s="all-w gal"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/GALENEGTi_0037.jpg" alt="Galene GTi" loading="lazy"/><div class="gi-ov"></div><div class="gi-lb"><span>Galene GTi 0037</span></div></div>
+      <div class="gi" data-c="windows" data-s="all-w gal"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/GALENEGTi_0038.jpg" alt="Galene GTi" loading="lazy"/><div class="gi-ov"></div><div class="gi-lb"><span>Galene GTi 0038</span></div></div>
+      <div class="gi" data-c="windows" data-s="all-w gal"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/GALENEGTi_0039.jpg" alt="Galene GTi" loading="lazy"/><div class="gi-ov"></div><div class="gi-lb"><span>Galene GTi 0039</span></div></div>
+      <div class="gi" data-c="windows" data-s="all-w gal"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/GALENEGTi_8354.jpg" alt="Galene GTi" loading="lazy"/><div class="gi-ov"></div><div class="gi-lb"><span>Galene GTi 8354</span></div></div>
+      <!-- WINDOWS: Louver -->
+      <div class="gi" data-c="windows" data-s="all-w louv"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Louver_0026.jpg" alt="Louver" loading="lazy"/><div class="gi-ov"></div><div class="gi-lb"><span>Louver 0026</span></div></div>
+      <div class="gi" data-c="windows" data-s="all-w louv"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Louver_0027.jpg" alt="Louver" loading="lazy"/><div class="gi-ov"></div><div class="gi-lb"><span>Louver 0027</span></div></div>
+      <div class="gi" data-c="windows" data-s="all-w louv"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Louver_0142.jpg" alt="Louver" loading="lazy"/><div class="gi-ov"></div><div class="gi-lb"><span>Louver 0142</span></div></div>
+      <div class="gi" data-c="windows" data-s="all-w louv"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Louver_8356.jpg" alt="Louver" loading="lazy"/><div class="gi-ov"></div><div class="gi-lb"><span>Louver 8356</span></div></div>
+      <!-- WINDOWS: Lumeal -->
+      <div class="gi" data-c="windows" data-s="all-w lum"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/LUMEALGAn_0018.jpg" alt="Lumeal GAn" loading="lazy"/><div class="gi-ov"></div><div class="gi-lb"><span>Lumeal GAn 0018</span></div></div>
+      <div class="gi" data-c="windows" data-s="all-w lum"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/LUMEALGAn_0022.jpg" alt="Lumeal GAn" loading="lazy"/><div class="gi-ov"></div><div class="gi-lb"><span>Lumeal GAn 0022</span></div></div>
+      <div class="gi" data-c="windows" data-s="all-w lum"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/LUMEALGAn_0047.jpg" alt="Lumeal GAn" loading="lazy"/><div class="gi-ov"></div><div class="gi-lb"><span>Lumeal GAn 0047</span></div></div>
+      <div class="gi" data-c="windows" data-s="all-w lum"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/LUMEALGAn_0143.jpg" alt="Lumeal GAn" loading="lazy"/><div class="gi-ov"></div><div class="gi-lb"><span>Lumeal GAn 0143</span></div></div>
+      <div class="gi" data-c="windows" data-s="all-w lum"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/LUMEALGAn_0144.jpg" alt="Lumeal GAn" loading="lazy"/><div class="gi-ov"></div><div class="gi-lb"><span>Lumeal GAn 0144</span></div></div>
+      <div class="gi" data-c="windows" data-s="all-w lum"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/LUMEALGAn_8358.jpg" alt="Lumeal GAn" loading="lazy"/><div class="gi-ov"></div><div class="gi-lb"><span>Lumeal GAn 8358</span></div></div>
+      <!-- WINDOWS: Topaze Gb+ -->
+      <div class="gi" data-c="windows" data-s="all-w tgp"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/TOPAZEGB%2B_0041.jpg" alt="Topaze Gb+" loading="lazy"/><div class="gi-ov"></div><div class="gi-lb"><span>Topaze Gb+ 0041</span></div></div>
+      <div class="gi" data-c="windows" data-s="all-w tgp"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/TOPAZEGB%2B_0049.jpg" alt="Topaze Gb+" loading="lazy"/><div class="gi-ov"></div><div class="gi-lb"><span>Topaze Gb+ 0049</span></div></div>
+      <div class="gi" data-c="windows" data-s="all-w tgp"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/TOPAZEGB%2B_0050.jpg" alt="Topaze Gb+" loading="lazy"/><div class="gi-ov"></div><div class="gi-lb"><span>Topaze Gb+ 0050</span></div></div>
+      <div class="gi" data-c="windows" data-s="all-w tgp"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/TOPAZEGB%2B_8357.jpg" alt="Topaze Gb+" loading="lazy"/><div class="gi-ov"></div><div class="gi-lb"><span>Topaze Gb+ 8357</span></div></div>
+      <!-- WINDOWS: Topaze Gb24 -->
+      <div class="gi" data-c="windows" data-s="all-w tg24"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/TOPAZEGB24_0040.jpg" alt="Topaze Gb24" loading="lazy"/><div class="gi-ov"></div><div class="gi-lb"><span>Topaze Gb24 0040</span></div></div>
+      <div class="gi" data-c="windows" data-s="all-w tg24"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/TOPAZEGB24_0043.jpg" alt="Topaze Gb24" loading="lazy"/><div class="gi-ov"></div><div class="gi-lb"><span>Topaze Gb24 0043</span></div></div>
+      <div class="gi" data-c="windows" data-s="all-w tg24"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/TOPAZEGB24_0044.jpg" alt="Topaze Gb24" loading="lazy"/><div class="gi-ov"></div><div class="gi-lb"><span>Topaze Gb24 0044</span></div></div>
+      <div class="gi" data-c="windows" data-s="all-w tg24"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/TOPAZEGB24_0046.jpg" alt="Topaze Gb24" loading="lazy"/><div class="gi-ov"></div><div class="gi-lb"><span>Topaze Gb24 0046</span></div></div>
+      <div class="gi" data-c="windows" data-s="all-w tg24"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/TOPAZEGB24_8355.jpg" alt="Topaze Gb24" loading="lazy"/><div class="gi-ov"></div><div class="gi-lb"><span>Topaze Gb24 8355</span></div></div>
+
+      <!-- SMART GLASS -->
+      <div class="gi" data-c="smart" data-s=""><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/SmartGlass_0083%20copy.jpg" alt="MD Cabin Smart Glass" loading="lazy"/><div class="gi-ov"></div><div class="gi-lb"><span>MD Cabin Smart Glass</span></div></div>
+    </div>
+    <div class="gal-empty" id="ge">No images in this filter.</div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb">
+  <button class="lb-x" onclick="lbClose()">&#215;</button>
+  <button class="lb-p" onclick="lbGo(-1)">&#8249;</button>
+  <img class="lb-img" id="lbI" src="" alt=""/>
+  <button class="lb-n" onclick="lbGo(1)">&#8250;</button>
+  <div class="lb-ct" id="lbC"></div>
+</div>
+
+<footer id="ft">
+  <div class="wrap">
+    <div class="ftg">
+      <div><img class="fli" src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Domestic_glass_Logo__1_.png" alt="Domestic Glass" onerror="this.style.display='none'"/><p class="ftag">Designing, fabricating, and installing custom glass solutions across India since 1991.</p></div>
+      <div class="fc"><h4>Solutions</h4><ul><li><a href="windows-doors.html">Windows</a></li><li><a href="railings.html">Railings</a></li><li><a href="partitions.html">Partitions and Doors</a></li><li><a href="shower-cubicles.html">Shower Cubicles</a></li><li><a href="mirrors.html">Mirrors</a></li></ul></div>
+      <div class="fc"><h4>Company</h4><ul><li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="portfolio.html">Portfolio</a>
+    <a href="about.html">About Us</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="architects.html">Architects</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="fc"><h4>Contact</h4><div class="fci"><a href="tel:+919553371114" class="fca">+91 95533 71114</a><a href="mailto:info@domesticglass.in" class="fca">info@domesticglass.in</a><span class="fca" style="cursor:default;">Hyderabad, Telangana</span></div></div>
+    </div>
+    <div class="fbb"><p class="fbcp">2025 Domestic Glass. All rights reserved.</p><div class="fbl"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a></div></div>
+  </div>
+</footer>
+
+<script>
+const hdr=document.getElementById('hdr');
+window.addEventListener('scroll',()=>hdr.classList.toggle('sc',window.scrollY>20));
+const hbg=document.getElementById('hbg'),mob=document.getElementById('mob');
+hbg.addEventListener('click',()=>{hbg.classList.toggle('op');mob.classList.toggle('op');});
+
+// Gallery filter
+let activeCat='sliding';
+const items=[...document.querySelectorAll('.gi')];
+
+function visible(){
+  return items.filter(it=>it.dataset.c===activeCat);
+}
+
+function render(){
+  const v=visible();
+  items.forEach(it=>it.style.display='none');
+  v.forEach(it=>it.style.display='block');
+  document.getElementById('ge').classList.toggle('on',v.length===0);
+}
+
+function gcat(btn,cat){
+  document.querySelectorAll('.gt').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  activeCat=cat;
+  render();
+}
+
+render();
+
+// Lightbox
+let lbArr=[],lbIdx=0;
+function lbOpen(src,idx,arr){lbArr=arr;lbIdx=idx;document.getElementById('lbI').src=src;document.getElementById('lbC').textContent=(idx+1)+' / '+arr.length;document.getElementById('lb').classList.add('on');document.body.style.overflow='hidden';}
+function lbClose(){document.getElementById('lb').classList.remove('on');document.body.style.overflow='';}
+function lbGo(d){lbIdx=(lbIdx+d+lbArr.length)%lbArr.length;document.getElementById('lbI').src=lbArr[lbIdx];document.getElementById('lbC').textContent=(lbIdx+1)+' / '+lbArr.length;}
+items.forEach(it=>it.addEventListener('click',()=>{const v=visible();const idx=v.indexOf(it);lbOpen(it.querySelector('img').src,idx,v.map(i=>i.querySelector('img').src));}));
+document.addEventListener('keydown',e=>{if(!document.getElementById('lb').classList.contains('on'))return;if(e.key==='ArrowRight')lbGo(1);if(e.key==='ArrowLeft')lbGo(-1);if(e.key==='Escape')lbClose();});
+document.getElementById('lb').addEventListener('click',e=>{if(e.target===e.currentTarget)lbClose();});
+
+// Pause marquee on hover
+document.querySelectorAll('.mg-track').forEach(t=>{
+  t.addEventListener('mouseenter',()=>t.style.animationPlayState='paused');
+  t.addEventListener('mouseleave',()=>t.style.animationPlayState='running');
+});
+</script>
+</body>
+</html>

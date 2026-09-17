@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Architects and Designers – Domestic Glass</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--black:#0A0A0A;--white:#FFFFFF;--g50:#F8F8F8;--g100:#F2F2F2;--g200:#E4E4E4;--g400:#9A9A9A;--g600:#5A5A5A;--g800:#2A2A2A;--teal:#458895;--teal-d:#336670;--fm:'Montserrat',system-ui,sans-serif;--fb:'DM Sans',system-ui,sans-serif;}
+html{scroll-behavior:smooth;}body{font-family:var(--fb);font-size:16px;line-height:1.6;color:var(--black);background:var(--white);-webkit-font-smoothing:antialiased;overflow-x:hidden;}img{max-width:100%;display:block;}
+.rev{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease;}.rev.on{opacity:1;transform:none;}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
+.wrap{max-width:1200px;margin:0 auto;padding:0 48px;}
+.teal-bar{display:block;width:36px;height:2px;background:var(--teal);margin-bottom:18px;}
+.eyebrow-g{font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--g400);}
+.eyebrow-w{font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.45);}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--fb);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:14px 28px;transition:all .22s;cursor:pointer;border:none;}
+.btn-blk{background:var(--black);color:var(--white);}.btn-blk:hover{background:var(--teal);}
+.btn-teal{background:var(--teal);color:var(--white);}.btn-teal:hover{background:var(--teal-d);}
+#hdr{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--g200);transition:box-shadow .3s;}
+#hdr.sc{box-shadow:0 4px 24px rgba(0,0,0,.07);}
+.nav{max-width:1200px;margin:0 auto;padding:0 48px;height:68px;display:flex;align-items:center;justify-content:space-between;gap:20px;}
+.logo img{height:40px;width:auto;}.logo-fb{font-family:var(--fm);font-size:18px;color:var(--black);display:none;}.logo-fb span{color:var(--teal);}
+.nl{display:flex;align-items:center;list-style:none;}
+.nl>li>a{font-size:12.5px;font-weight:500;letter-spacing:.04em;color:var(--g600);padding:8px 14px;display:flex;align-items:center;gap:4px;transition:color .2s;}
+.nl>li>a:hover,.nl>li.act>a{color:var(--black);}
+.drop{position:relative;}.drop>a svg{transition:transform .2s;}.drop:hover>a svg{transform:rotate(180deg);}
+.dd{position:absolute;top:calc(100% + 8px);left:0;background:var(--white);border:1px solid var(--g200);min-width:210px;padding:8px 0;box-shadow:0 16px 40px rgba(0,0,0,.10);opacity:0;visibility:hidden;transform:translateY(-6px);transition:all .2s;list-style:none;}
+.drop:hover .dd{opacity:1;visibility:visible;transform:none;}
+.dd li a{display:block;padding:10px 18px;font-size:12.5px;color:var(--g600);transition:background .15s,color .15s;}.dd li a:hover{background:var(--g50);color:var(--teal);}
+.nr{display:flex;align-items:center;gap:14px;flex-shrink:0;}
+.nph{font-size:12.5px;font-weight:500;color:var(--g600);transition:color .2s;}.nph:hover{color:var(--teal);}
+.hbg{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
+.hbg span{display:block;width:22px;height:1.5px;background:var(--black);transition:transform .25s,opacity .25s;}
+.hbg.op span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}.hbg.op span:nth-child(2){opacity:0;}.hbg.op span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+.mob{display:none;flex-direction:column;background:var(--white);border-top:1px solid var(--g200);padding:16px 24px 24px;}
+.mob.op{display:flex;}.mob a{font-size:15px;color:var(--g800);padding:13px 0;border-bottom:1px solid var(--g100);transition:color .2s;}.mob a:last-child{border-bottom:none;}.mob a:hover{color:var(--teal);}
+.mob-cta{margin-top:16px;background:var(--black);color:var(--white)!important;text-align:center;padding:13px!important;border-bottom:none!important;font-weight:600;letter-spacing:.06em;font-size:11px!important;text-transform:uppercase;}
+.ph{padding:148px 0 88px;background:var(--black);position:relative;overflow:hidden;}
+.ph::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.025) 1px,transparent 1px);background-size:28px 28px;}
+.ph::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--teal);}
+.phi{position:relative;z-index:1;}
+.ph h1{font-family:var(--fm);font-size:clamp(44px,5.5vw,80px);font-weight:300;line-height:1.05;color:var(--white);margin:18px 0 24px;}
+.ph h1 em{font-style:normal;font-weight:600;color:var(--teal);}
+.ph p{font-size:16px;line-height:1.75;color:rgba(255,255,255,.48);max-width:520px;}
+.collab{padding:100px 0;background:var(--white);}
+.collab-g{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.collab-left h2{font-family:var(--fm);font-size:clamp(30px,3.5vw,46px);font-weight:300;line-height:1.15;color:var(--black);margin:14px 0 22px;}
+.collab-left p{font-size:15px;line-height:1.8;color:var(--g600);margin-bottom:16px;}
+.collab-img{position:relative;overflow:hidden;}
+.collab-img img{width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:4/3;}
+.collab-img::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--teal);}
+.how{padding:100px 0;background:var(--g50);}
+.how h2{font-family:var(--fm);font-size:clamp(30px,3.5vw,46px);font-weight:300;color:var(--black);margin:14px 0 52px;}
+.how-g{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.how-c{background:var(--white);border:1px solid var(--g200);padding:36px 28px;position:relative;overflow:hidden;transition:transform .22s,box-shadow .22s;}
+.how-c::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--teal);transform:scaleX(0);transform-origin:left;transition:transform .3s;}
+.how-c:hover::before{transform:scaleX(1);}.how-c:hover{transform:translateY(-4px);box-shadow:0 10px 32px rgba(0,0,0,.07);}
+.how-c h3{font-family:var(--fm);font-size:20px;font-weight:400;color:var(--black);margin-bottom:10px;}
+.how-c p{font-size:13px;line-height:1.65;color:var(--g600);}
+.acta{background:var(--teal);padding:88px 0;}
+.acta-i{display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;}
+.acta h2{font-family:var(--fm);font-size:clamp(28px,3.8vw,50px);font-weight:300;color:var(--white);margin-bottom:10px;}
+.acta p{font-size:15px;color:rgba(255,255,255,.62);}
+.btn-ws{display:inline-flex;align-items:center;gap:8px;background:var(--white);color:var(--teal);font-family:var(--fb);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:14px 28px;transition:all .22s;}
+.btn-ws:hover{background:var(--black);color:var(--white);}
+#ft{background:var(--black);padding:72px 0 0;}
+.ftg{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:52px;padding-bottom:52px;border-bottom:1px solid rgba(255,255,255,.07);}
+.fli{height:38px;width:auto;display:block;margin-bottom:18px;opacity:.85;}
+.ftag{font-size:13px;line-height:1.65;color:rgba(255,255,255,.38);max-width:240px;margin-bottom:24px;}
+.fc h4{font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.22);margin-bottom:18px;}
+.fc ul{list-style:none;}.fc ul li{margin-bottom:9px;}.fc ul li a{font-size:13px;color:rgba(255,255,255,.42);transition:color .2s;}.fc ul li a:hover{color:var(--teal);}
+.fci{display:flex;flex-direction:column;gap:9px;}.fca{font-size:13px;color:rgba(255,255,255,.42);display:flex;gap:7px;transition:color .2s;}.fca:hover{color:var(--teal);}
+.fbb{padding:22px 0;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;}
+.fbcp{font-size:11px;color:rgba(255,255,255,.18);}
+.fbl{display:flex;gap:18px;}.fbl a{font-size:11px;color:rgba(255,255,255,.18);transition:color .2s;}.fbl a:hover{color:var(--teal);}
+@media(max-width:1024px){.collab-g{grid-template-columns:1fr;gap:48px;}.how-g{grid-template-columns:repeat(2,1fr);}.ftg{grid-template-columns:1fr 1fr;}}
+@media(max-width:900px){.nl,.nr .btn-blk,.nph{display:none;}.hbg{display:flex;}.wrap,.nav{padding-left:24px;padding-right:24px;}.acta-i{flex-direction:column;align-items:flex-start;}}
+@media(max-width:640px){.wrap,.nav{padding-left:18px;padding-right:18px;}.how-g{grid-template-columns:1fr;}.ftg{grid-template-columns:1fr;}.fbb{flex-direction:column;align-items:flex-start;}.collab,.how,.acta{padding:72px 0;}}
+.wa-fab{position:fixed;bottom:28px;right:28px;z-index:8000;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);transition:transform .22s,box-shadow .22s;text-decoration:none;}
+.wa-fab:hover{transform:scale(1.1);box-shadow:0 6px 28px rgba(37,211,102,.55);}
+
+/* PARTNERS */
+.partners{padding:88px 0;background:var(--g50);border-top:1px solid var(--g200);}
+.partners-head{margin-bottom:52px;}
+.partners-head h2{font-family:var(--fm);font-size:clamp(26px,3vw,38px);font-weight:300;color:var(--black);margin-top:14px;}
+.logo-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:2px;background:var(--g200);}
+.logo-tile{background:var(--white);display:flex;align-items:center;justify-content:center;padding:28px 24px;min-height:100px;transition:background .2s;}
+.logo-tile:hover{background:var(--g50);}
+.logo-tile img{max-height:48px;max-width:100%;width:auto;object-fit:contain;filter:grayscale(100%);opacity:.55;transition:filter .3s,opacity .3s;}
+.logo-tile:hover img{filter:grayscale(0%);opacity:1;}
+@media(max-width:900px){.logo-grid{grid-template-columns:repeat(4,1fr);}}
+@media(max-width:640px){.logo-grid{grid-template-columns:repeat(3,1fr);}.logo-tile{padding:20px 16px;min-height:80px;}.logo-tile img{max-height:36px;}}
+</style>
+</head>
+<body>
+<header id="hdr">
+  <div class="nav">
+    <a href="index.html" class="logo">
+      <img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Domestic_glass_Logo__1_.png" alt="Domestic Glass" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+      <span class="logo-fb">Domestic <span>Glass</span></span>
+    </a>
+    <ul class="nl">
+      <li><a href="index.html">Home</a></li>
+      <li class="drop">
+        <a href="#">Solutions <svg width="10" height="10" fill="none" viewBox="0 0 10 10"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
+        <ul class="dd">
+          <li><a href="windows-doors.html">Windows</a></li>
+          <li><a href="railings.html">Railings</a></li>
+          <li><a href="partitions.html">Partitions and Doors</a></li>
+          <li><a href="shower-cubicles.html">Shower Cubicles</a></li>
+          <li><a href="mirrors.html">Mirrors</a></li>
+        </ul>
+      </li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="architects.html">Architects</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nr">
+      <a href="contact.html" class="btn btn-blk" style="padding:9px 18px;font-size:11px;">Book a Visit</a>
+    </div>
+    <button class="hbg" id="hbg"><span></span><span></span><span></span></button>
+  </div>
+  <nav class="mob" id="mob">
+    <a href="index.html">Home</a>
+    <a href="windows-doors.html">Windows</a>
+    <a href="railings.html">Railings</a>
+    <a href="partitions.html">Partitions and Doors</a>
+    <a href="shower-cubicles.html">Shower Cubicles</a>
+    <a href="mirrors.html">Mirrors</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="about.html">About Us</a>
+    <a href="architects.html">Architects</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="mob-cta">Book a Site Visit</a>
+  </nav>
+</header>
+
+<section class="ph">
+  <div class="wrap phi">
+    <span class="eyebrow-w rev">Architects and Designers</span>
+    <h1 class="rev d1">Your Glass<br/><em>Execution Partner</em></h1>
+    <p class="rev d2">We collaborate with architects and interior designers to bring ambitious concepts to life. From technical detailing to final installation, we handle everything.</p>
+  </div>
+</section>
+
+<section class="collab">
+  <div class="wrap">
+    <div class="collab-g">
+      <div class="rev">
+        <span class="teal-bar"></span>
+        <span class="eyebrow-g">Why Partner With Us</span>
+        <h2>We speak the same language as your vision.</h2>
+        <p>We understand that for architects and designers, the specification is everything. We work to your exact drawings, tolerances, and finish requirements, with no shortcuts.</p>
+        <p>Our team has worked alongside some of the most demanding design practices in India, delivering precision glass work that holds up to scrutiny on site and in photography.</p>
+        <a href="contact.html" class="btn btn-blk" style="margin-top:28px;">Partner With Us</a>
+      </div>
+      <div class="collab-img rev d2">
+        <img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/002.jpg" alt="Architect Project" loading="lazy"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how">
+  <div class="wrap">
+    <span class="teal-bar rev"></span>
+    <span class="eyebrow-g rev">How We Help</span>
+    <h2 class="rev d1">End-to-end support at every stage</h2>
+    <div class="how-g">
+      <div class="how-c rev d1"><h3>Design Consultation</h3><p>We work with your design intent to recommend the best glass systems, hardware, and finishes for the project.</p></div>
+      <div class="how-c rev d2"><h3>Technical Detailing</h3><p>We produce detailed shop drawings and specifications that integrate seamlessly with your architectural drawings.</p></div>
+      <div class="how-c rev d3"><h3>Samples and Mock-ups</h3><p>We provide physical samples and full-scale mock-ups so you and your client can approve before fabrication begins.</p></div>
+      <div class="how-c rev d1"><h3>Custom Fabrication</h3><p>All work is fabricated in-house to your exact specifications. No outsourcing, no compromises on quality.</p></div>
+      <div class="how-c rev d2"><h3>Project Coordination</h3><p>A dedicated project manager coordinates with your site team to ensure smooth delivery and installation.</p></div>
+      <div class="how-c rev d3"><h3>Site Execution</h3><p>Our precision installation teams work to your programme, ensuring the finish meets the design intent exactly.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="partners">
+  <div class="wrap">
+    <div class="partners-head rev">
+      <span class="teal-bar"></span>
+      <span class="eyebrow-g">Architect and Design Partners</span>
+      <h2 class="rev d1">Firms We Have Worked With</h2>
+    </div>
+    <div class="logo-grid">
+      <div class="logo-tile rev d1"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Architect%20logos/Anchuri%20Design%20World.jpg" alt="Anchuri Design World"/></div>
+      <div class="logo-tile rev d2"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Architect%20logos/Daftary%20Architects.jpg" alt="Daftary Architects"/></div>
+      <div class="logo-tile rev d3"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Architect%20logos/Design%20Dialogue.jpg" alt="Design Dialogue"/></div>
+      <div class="logo-tile rev d1"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Architect%20logos/Form%20%26%20Space.jpg" alt="Form and Space Design Consultants"/></div>
+      <div class="logo-tile rev d2"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Architect%20logos/NA%20Architects.jpg" alt="NA Architects"/></div>
+      <div class="logo-tile rev d3"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Architect%20logos/Nandu%20Associates.jpg" alt="Nandu Associates"/></div>
+      <div class="logo-tile rev d1"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Architect%20logos/Praveen%20Architects.png" alt="Praveen Architects"/></div>
+      <div class="logo-tile rev d2"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Architect%20logos/SPA.jpg" alt="Sunil Pillai Associates"/></div>
+      <div class="logo-tile rev d3"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Architect%20logos/Span%20Surat.jpg" alt="Span Surat"/></div>
+      <div class="logo-tile rev d1"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Architect%20logos/Square%20Design%20Studio.png" alt="Squares Design Studio"/></div>
+      <div class="logo-tile rev d2"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Architect%20logos/Studio%20Origin.webp" alt="Studio Origin"/></div>
+      <div class="logo-tile rev d3"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Architect%20logos/VITTI%20Living.webp" alt="VITTI Living"/></div>
+    </div>
+  </div>
+</section>
+
+<section class="acta">
+  <div class="wrap acta-i">
+    <div class="rev"><h2>Let's Work on Your Next Project</h2><p>Share your brief and we will get back to you within one working day.</p></div>
+    <a href="contact.html" class="btn-ws rev d2">Partner With Domestic Glass</a>
+  </div>
+</section>
+
+<footer id="ft">
+  <div class="wrap">
+    <div class="ftg">
+      <div><img class="fli" src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Domestic_glass_Logo__1_.png" alt="Domestic Glass" onerror="this.style.display='none'"/><p class="ftag">Designing, fabricating, and installing custom glass solutions across India since 1991.</p></div>
+      <div class="fc"><h4>Solutions</h4><ul><li><a href="windows-doors.html">Windows</a></li><li><a href="railings.html">Railings</a></li><li><a href="partitions.html">Partitions and Doors</a></li><li><a href="shower-cubicles.html">Shower Cubicles</a></li><li><a href="mirrors.html">Mirrors</a></li></ul></div>
+      <div class="fc"><h4>Company</h4><ul><li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="portfolio.html">Portfolio</a>
+    <a href="about.html">About Us</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="architects.html">Architects</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="fc"><h4>Contact</h4><div class="fci"><a href="tel:+919553371114" class="fca">+91 95533 71114</a><a href="mailto:info@domesticglass.in" class="fca">info@domesticglass.in</a></div></div>
+    </div>
+    <div class="fbb"><p class="fbcp">2025 Domestic Glass. All rights reserved.</p><div class="fbl"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a></div></div>
+  </div>
+</footer>
+<script>
+const hdr=document.getElementById('hdr');window.addEventListener('scroll',()=>hdr.classList.toggle('sc',window.scrollY>20));
+const hbg=document.getElementById('hbg'),mob=document.getElementById('mob');hbg.addEventListener('click',()=>{hbg.classList.toggle('op');mob.classList.toggle('op');});
+const ro=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -20px 0px'});
+document.querySelectorAll('.rev').forEach(el=>ro.observe(el));
+document.querySelectorAll('.ph .rev').forEach(el=>el.classList.add('on'));
+</script>
+</body>
+</html>

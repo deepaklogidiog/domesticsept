@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The Luxe Residence – Domestic Glass Blog</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--black:#0A0A0A;--white:#FFFFFF;--g50:#F8F8F8;--g100:#F2F2F2;--g200:#E4E4E4;--g400:#9A9A9A;--g600:#5A5A5A;--g800:#2A2A2A;--teal:#458895;--teal-d:#336670;--fm:'Montserrat',system-ui,sans-serif;--fb:'DM Sans',system-ui,sans-serif;}
+html{scroll-behavior:smooth;}body{font-family:var(--fb);font-size:16px;line-height:1.6;color:var(--black);background:var(--white);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+img{max-width:100%;display:block;}a{text-decoration:none;color:inherit;}
+.wrap{max-width:1200px;margin:0 auto;padding:0 48px;}
+.btn-blk{background:var(--black);color:var(--white);display:inline-flex;align-items:center;gap:8px;font-family:var(--fb);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:9px 18px;transition:all .22s;}
+.btn-blk:hover{background:var(--teal);}
+#hdr{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--g200);transition:box-shadow .3s;}
+#hdr.sc{box-shadow:0 4px 24px rgba(0,0,0,.07);}
+.nav{max-width:1200px;margin:0 auto;padding:0 48px;height:68px;display:flex;align-items:center;justify-content:space-between;gap:20px;}
+.logo img{height:40px;width:auto;display:block;}
+.logo-fb{font-family:var(--fm);font-size:16px;font-weight:600;color:var(--black);display:none;}.logo-fb span{color:var(--teal);}
+.nl{display:flex;align-items:center;list-style:none;}
+.nl>li>a{font-size:12.5px;font-weight:500;letter-spacing:.04em;color:var(--g600);padding:8px 14px;display:flex;align-items:center;gap:4px;transition:color .2s;}
+.nl>li>a:hover,.nl>li.act>a{color:var(--black);}
+.drop{position:relative;}.drop>a svg{transition:transform .2s;}.drop:hover>a svg{transform:rotate(180deg);}
+.dd{position:absolute;top:calc(100% + 8px);left:0;background:var(--white);border:1px solid var(--g200);min-width:210px;padding:8px 0;box-shadow:0 16px 40px rgba(0,0,0,.10);opacity:0;visibility:hidden;transform:translateY(-6px);transition:all .2s;list-style:none;}
+.drop:hover .dd{opacity:1;visibility:visible;transform:none;}
+.dd li a{display:block;padding:10px 18px;font-size:12.5px;color:var(--g600);transition:background .15s,color .15s;}.dd li a:hover{background:var(--g50);color:var(--teal);}
+.nr{display:flex;align-items:center;gap:14px;flex-shrink:0;}
+.hbg{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
+.hbg span{display:block;width:22px;height:1.5px;background:var(--black);transition:transform .25s,opacity .25s;}
+.hbg.op span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}.hbg.op span:nth-child(2){opacity:0;}.hbg.op span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+.mob{display:none;flex-direction:column;background:var(--white);border-top:1px solid var(--g200);padding:16px 24px 24px;}
+.mob.op{display:flex;}.mob a{font-size:15px;color:var(--g800);padding:13px 0;border-bottom:1px solid var(--g100);transition:color .2s;}
+.mob a:last-child{border-bottom:none;}.mob a:hover{color:var(--teal);}
+.mob-cta{margin-top:16px;background:var(--black);color:var(--white)!important;text-align:center;padding:13px!important;border-bottom:none!important;font-weight:600;font-size:11px!important;text-transform:uppercase;}
+.post-hero{position:relative;height:520px;overflow:hidden;margin-top:68px;}
+.post-hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;}
+.post-hero-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.82) 0%,rgba(0,0,0,.3) 60%,rgba(0,0,0,.2) 100%);}
+.post-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--teal);}
+.post-hero-content{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:0 48px 52px;max-width:1200px;margin:0 auto;}
+.post-cat{font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;background:var(--teal);color:var(--white);padding:5px 12px;display:inline-block;margin-bottom:16px;width:fit-content;}
+.post-title{font-family:var(--fm);font-size:clamp(28px,4vw,52px);font-weight:300;color:var(--white);line-height:1.15;max-width:760px;margin-bottom:20px;}
+.post-meta{display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.post-meta span{font-size:12px;color:rgba(255,255,255,.55);display:flex;align-items:center;gap:5px;}
+.post-body{padding:64px 0 96px;}
+.post-layout{display:grid;grid-template-columns:1fr 320px;gap:64px;align-items:start;}
+.post-content h2{font-family:var(--fm);font-size:22px;font-weight:500;color:var(--black);margin:44px 0 16px;padding-bottom:12px;border-bottom:1px solid var(--g200);}
+.post-content h2:first-child{margin-top:0;}
+.post-content p{font-size:15px;line-height:1.85;color:var(--g600);margin-bottom:20px;}
+.post-content p:last-child{margin-bottom:0;}
+.post-content ul{margin:0 0 20px 20px;}
+.post-content ul li{font-size:15px;line-height:1.8;color:var(--g600);margin-bottom:6px;}
+.post-content ul li::marker{color:var(--teal);}
+.pull-quote{border-left:3px solid var(--teal);padding:20px 28px;background:var(--g50);margin:36px 0;font-family:var(--fm);font-size:17px;font-weight:300;color:var(--black);line-height:1.55;font-style:italic;}
+.post-sidebar{position:sticky;top:88px;}
+.sidebar-card{border:1px solid var(--g200);padding:28px;margin-bottom:24px;}
+.sidebar-card h4{font-family:var(--fm);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--g400);margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--g200);}
+.sidebar-row{display:flex;flex-direction:column;gap:12px;}
+.sidebar-item{display:flex;flex-direction:column;gap:2px;}
+.sidebar-label{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--g400);}
+.sidebar-value{font-size:13px;color:var(--black);}
+.sidebar-cta{background:var(--teal);color:var(--white);padding:14px 20px;font-family:var(--fb);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;display:block;text-align:center;transition:background .2s;margin-top:4px;}
+.sidebar-cta:hover{background:var(--teal-d);}
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:var(--g400);margin-bottom:32px;transition:color .2s;}
+.back-link:hover{color:var(--teal);}
+#ft{background:var(--black);padding:72px 0 0;}
+.ftg{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:52px;padding-bottom:52px;border-bottom:1px solid rgba(255,255,255,.07);}
+.fli{height:38px;width:auto;display:block;margin-bottom:18px;opacity:.85;}
+.ftag{font-size:13px;line-height:1.65;color:rgba(255,255,255,.38);max-width:240px;}
+.fc h4{font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.22);margin-bottom:18px;}
+.fc ul{list-style:none;}.fc ul li{margin-bottom:9px;}.fc ul li a{font-size:13px;color:rgba(255,255,255,.42);transition:color .2s;}.fc ul li a:hover{color:var(--teal);}
+.fci{display:flex;flex-direction:column;gap:9px;}.fca{font-size:13px;color:rgba(255,255,255,.42);transition:color .2s;}.fca:hover{color:var(--teal);}
+.fbb{padding:22px 0;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;}
+.fbcp{font-size:11px;color:rgba(255,255,255,.18);}
+.fbl{display:flex;gap:18px;}.fbl a{font-size:11px;color:rgba(255,255,255,.18);transition:color .2s;}.fbl a:hover{color:var(--teal);}
+@media(max-width:1024px){.post-layout{grid-template-columns:1fr;}.post-sidebar{position:static;}.ftg{grid-template-columns:1fr 1fr;}}
+@media(max-width:900px){.nl,.nr .btn-blk{display:none;}.hbg{display:flex;}.wrap,.nav{padding-left:24px;padding-right:24px;}.post-hero-content{padding-left:24px;padding-right:24px;}}
+@media(max-width:640px){.wrap,.nav{padding-left:18px;padding-right:18px;}.post-hero{height:420px;}.post-hero-content{padding-left:18px;padding-right:18px;padding-bottom:36px;}.ftg{grid-template-columns:1fr;}.fbb{flex-direction:column;align-items:flex-start;}}
+.wa-fab{position:fixed;bottom:28px;right:28px;z-index:8000;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);transition:transform .22s,box-shadow .22s;text-decoration:none;}
+.wa-fab:hover{transform:scale(1.1);box-shadow:0 6px 28px rgba(37,211,102,.55);}
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <div class="nav">
+    <a href="index.html" class="logo">
+      <img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Domestic_glass_Logo__1_.png" alt="Domestic Glass" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+      <span class="logo-fb">Domestic <span>Glass</span></span>
+    </a>
+    <ul class="nl">
+      <li><a href="index.html">Home</a></li>
+      <li class="drop">
+        <a href="#">Solutions <svg width="10" height="10" fill="none" viewBox="0 0 10 10"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
+        <ul class="dd">
+          <li><a href="windows-doors.html">Windows</a></li>
+          <li><a href="railings.html">Railings</a></li>
+          <li><a href="partitions.html">Partitions and Doors</a></li>
+          <li><a href="shower-cubicles.html">Shower Cubicles</a></li>
+          <li><a href="mirrors.html">Mirrors</a></li>
+        </ul>
+      </li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="architects.html">Architects</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nr">
+      <a href="contact.html" class="btn btn-blk" style="padding:9px 18px;font-size:11px;">Book a Visit</a>
+    </div>
+    <button class="hbg" id="hbg"><span></span><span></span><span></span></button>
+  </div>
+  <nav class="mob" id="mob">
+    <a href="index.html">Home</a>
+    <a href="windows-doors.html">Windows</a>
+    <a href="railings.html">Railings</a>
+    <a href="partitions.html">Partitions and Doors</a>
+    <a href="shower-cubicles.html">Shower Cubicles</a>
+    <a href="mirrors.html">Mirrors</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="about.html">About Us</a>
+    <a href="architects.html">Architects</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="mob-cta">Book a Site Visit</a>
+  </nav>
+</header>
+
+<div class="post-hero">
+  <div class="post-hero-bg" style="background-image:url('https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Mirror_0060.jpg')"></div>
+  <div class="post-hero-ov"></div>
+  <div class="post-hero-content">
+    <span class="post-cat">Residential — Case Study</span>
+    <h1 class="post-title">Bespoke Framed Shower Cubicles and Custom Mirrors for a Luxury Residence</h1>
+    <div class="post-meta">
+      <span><svg width="11" height="11" fill="none" viewBox="0 0 11 11"><circle cx="5.5" cy="4.5" r="1.8" stroke="currentColor" stroke-width="1"/><path d="M5.5 1C3.3 1 1.5 2.8 1.5 5c0 3.2 4 6 4 6s4-2.8 4-6C9.5 2.8 7.7 1 5.5 1z" stroke="currentColor" stroke-width="1"/></svg>Banjara Hills, Hyderabad</span>
+      <span><svg width="11" height="11" fill="none" viewBox="0 0 11 11"><circle cx="5.5" cy="5.5" r="4" stroke="currentColor" stroke-width="1"/><path d="M5.5 3v2.5L7 7" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg>Framed Shower Cubicles and Custom Mirrors</span>
+      <span>Architect: Praveen Jangid, Praveen Architects</span>
+    </div>
+  </div>
+</div>
+
+<section class="post-body">
+  <div class="wrap">
+    <a href="blog.html" class="back-link">
+      <svg width="14" height="14" fill="none" viewBox="0 0 14 14"><path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+      Back to Blog
+    </a>
+    <div class="post-layout">
+      <div class="post-content">
+
+        <h2>Transforming the Architect's Vision into a Refined Living Experience</h2>
+        <p>Designed by Architect Praveen Jangid of Praveen Architects, this luxury residence celebrates understated elegance through thoughtful detailing and carefully curated spaces. Every bathroom was envisioned as more than a functional area — it was designed to become an extension of the home's overall aesthetic.</p>
+        <p>Our role was to execute bespoke framed shower cubicles and custom mirrors, ensuring every installation complemented the architect's vision while delivering long-term durability, precision and everyday functionality.</p>
+
+        <h2>Every Space Deserved a Custom Solution</h2>
+        <p>Unlike standard residential projects, no two bathrooms in this home shared the same layout or design requirements. Each space had its own proportions, material palette and visual identity, making customisation essential rather than optional.</p>
+        <p>We fabricated and installed framed shower systems and mirrors specifically for each location, ensuring every element integrated seamlessly with the surrounding finishes and architectural detailing. The result is a cohesive design language carried consistently throughout the residence.</p>
+
+        <div class="pull-quote">Luxury projects demand exceptional attention to detail because even the smallest inconsistencies become immediately noticeable. Every component was custom-made — there was virtually no room for on-site adjustments.</div>
+
+        <h2>The Challenge: Precision in Every Detail</h2>
+        <p>Each shower enclosure had to align perfectly with finished walls, flooring and ceiling levels, while every customised mirror required precise sizing, edge detailing and positioning to create balanced proportions within the space. Hardware finishes also needed to complement the surrounding materials without drawing unnecessary attention.</p>
+        <p>Since every component was custom-made, accurate measurements, detailed fabrication drawings and careful coordination were essential before manufacturing began.</p>
+
+        <h2>Bespoke Execution That Complements the Architecture</h2>
+        <p>Executing customised glass solutions is about much more than installation — it is about understanding the architect's design intent.</p>
+        <p>Our team worked closely through every stage of execution, from detailed site measurements and fabrication planning to final installation. The framed shower cubicles were engineered for smooth operation, durability and low maintenance, while the bespoke mirrors were carefully positioned to enhance natural light and create a greater sense of space.</p>
+        <p>Attention was given to every junction, hardware finish and alignment, ensuring the final installations felt like an integral part of the architecture rather than individual products added later.</p>
+
+        <h2>The Result</h2>
+        <p>The completed bathrooms reflect a balance of luxury, functionality and timeless design. The framed shower cubicles introduce clean architectural lines while providing lasting performance, and the customised mirrors elevate each space by enhancing depth, light and visual harmony. Rather than becoming focal points themselves, these glass elements quietly support the architect's vision, allowing the overall design to take centre stage.</p>
+
+        <h2>Why Custom Glass Solutions Elevate Luxury Homes</h2>
+        <p>Every premium residence deserves solutions tailored to its architecture. Custom glass systems offer benefits that standard products simply cannot match:</p>
+        <ul>
+          <li>Designed to suit unique layouts and dimensions</li>
+          <li>Premium framed shower cubicles with long-lasting performance</li>
+          <li>Bespoke mirrors that enhance natural light and spatial perception</li>
+          <li>Refined detailing that complements luxury interiors</li>
+          <li>Precision-engineered installations for a seamless finish</li>
+          <li>Durable, low-maintenance solutions built for everyday living</li>
+        </ul>
+
+        <h2>Our Role</h2>
+        <p>At Domestic Glass, we believe the best architectural glass solutions are the result of collaboration. While the design vision belongs to the architect, our responsibility is to execute it with precision, craftsmanship and meticulous attention to detail. From customised fabrication to flawless installation, every project is approached with the same commitment to quality, ensuring the finished space performs beautifully while remaining true to the architect's intent.</p>
+
+      </div>
+
+      <div class="post-sidebar">
+        <div class="sidebar-card">
+          <h4>Project Details</h4>
+          <div class="sidebar-row">
+            <div class="sidebar-item"><span class="sidebar-label">Location</span><span class="sidebar-value">Banjara Hills, Hyderabad</span></div>
+            <div class="sidebar-item"><span class="sidebar-label">Architect</span><span class="sidebar-value">Praveen Jangid, Praveen Architects</span></div>
+            <div class="sidebar-item"><span class="sidebar-label">Sector</span><span class="sidebar-value">Residential</span></div>
+            <div class="sidebar-item"><span class="sidebar-label">Solutions</span><span class="sidebar-value">Framed Shower Cubicles and Custom Mirrors</span></div>
+          </div>
+        </div>
+        <div class="sidebar-card">
+          <h4>Planning a Luxury Residence?</h4>
+          <p style="font-size:13px;color:var(--g600);line-height:1.65;margin-bottom:16px;">We specialise in bespoke glass solutions for premium residential projects across Hyderabad.</p>
+          <a href="contact.html" class="sidebar-cta">Start a Conversation</a>
+        </div>
+        <div class="sidebar-card">
+          <h4>More Case Studies</h4>
+          <div class="sidebar-row">
+            <a href="blog-contemporary-office.html" style="font-size:13px;color:var(--black);transition:color .2s;display:flex;align-items:flex-start;gap:8px;" onmouseover="this.style.color='#458895'" onmouseout="this.style.color='#0A0A0A'">
+              <svg width="14" height="14" fill="none" viewBox="0 0 14 14" style="flex-shrink:0;margin-top:2px;"><path d="M2 7h10M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+              The Contemporary Office: Minimal Glass Partition Systems
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="ft">
+  <div class="wrap">
+    <div class="ftg">
+      <div><img class="fli" src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Domestic_glass_Logo__1_.png" alt="Domestic Glass" onerror="this.style.display='none'"/><p class="ftag">Designing, fabricating, and installing custom glass solutions across India since 1991.</p></div>
+      <div class="fc"><h4>Solutions</h4><ul><li><a href="windows-doors.html">Windows</a></li><li><a href="railings.html">Railings</a></li><li><a href="partitions.html">Partitions and Doors</a></li><li><a href="shower-cubicles.html">Shower Cubicles</a></li><li><a href="mirrors.html">Mirrors</a></li></ul></div>
+      <div class="fc"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="blog.html">Blog</a></li><li><a href="architects.html">Architects</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="fc"><h4>Contact</h4><div class="fci"><a href="tel:+919553371114" class="fca">+91 95533 71114</a><a href="mailto:info@domesticglass.in" class="fca">info@domesticglass.in</a><span class="fca" style="cursor:default;">Hyderabad, Telangana</span></div></div>
+    </div>
+    <div class="fbb"><p class="fbcp">2025 Domestic Glass. All rights reserved.</p><div class="fbl"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a></div></div>
+  </div>
+</footer>
+
+<script>
+const hdr=document.getElementById('hdr');
+window.addEventListener('scroll',()=>hdr.classList.toggle('sc',window.scrollY>20));
+const hbg=document.getElementById('hbg'),mob=document.getElementById('mob');
+hbg.addEventListener('click',()=>{hbg.classList.toggle('op');mob.classList.toggle('op');});
+</script>
+</body>
+</html>

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Windows – Domestic Glass</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--black:#0A0A0A;--white:#FFFFFF;--g50:#F8F8F8;--g100:#F2F2F2;--g200:#E4E4E4;--g400:#9A9A9A;--g600:#5A5A5A;--g800:#2A2A2A;--teal:#458895;--teal-d:#336670;--fm:'Montserrat',system-ui,sans-serif;--fb:'DM Sans',system-ui,sans-serif;}
+html{scroll-behavior:smooth;}body{font-family:var(--fb);font-size:16px;line-height:1.6;color:var(--black);background:var(--white);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+img{max-width:100%;display:block;}a{text-decoration:none;color:inherit;}
+.rev{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease;}.rev.on{opacity:1;transform:none;}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
+.wrap{max-width:1200px;margin:0 auto;padding:0 48px;}
+.teal-bar{display:block;width:36px;height:2px;background:var(--teal);margin-bottom:18px;}
+.eyebrow-g{font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--g400);}
+.eyebrow-w{font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.45);}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--fb);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:14px 28px;transition:all .22s;cursor:pointer;border:none;}
+.btn-blk{background:var(--black);color:var(--white);}.btn-blk:hover{background:var(--teal);}
+#hdr{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--g200);transition:box-shadow .3s;}
+#hdr.sc{box-shadow:0 4px 24px rgba(0,0,0,.07);}
+.nav{max-width:1200px;margin:0 auto;padding:0 48px;height:68px;display:flex;align-items:center;justify-content:space-between;gap:20px;}
+.logo img{height:40px;width:auto;display:block;}
+.logo-fb{font-family:var(--fm);font-size:16px;font-weight:600;color:var(--black);display:none;}.logo-fb span{color:var(--teal);}
+.nl{display:flex;align-items:center;list-style:none;}
+.nl>li>a{font-size:12.5px;font-weight:500;letter-spacing:.04em;color:var(--g600);padding:8px 14px;display:flex;align-items:center;gap:4px;transition:color .2s;}
+.nl>li>a:hover,.nl>li.act>a{color:var(--black);}
+.drop{position:relative;}.drop>a svg{transition:transform .2s;}.drop:hover>a svg{transform:rotate(180deg);}
+.dd{position:absolute;top:calc(100% + 8px);left:0;background:var(--white);border:1px solid var(--g200);min-width:210px;padding:8px 0;box-shadow:0 16px 40px rgba(0,0,0,.10);opacity:0;visibility:hidden;transform:translateY(-6px);transition:all .2s;list-style:none;}
+.drop:hover .dd{opacity:1;visibility:visible;transform:none;}
+.dd li a{display:block;padding:10px 18px;font-size:12.5px;color:var(--g600);transition:background .15s,color .15s;}.dd li a:hover{background:var(--g50);color:var(--teal);}
+.nr{display:flex;align-items:center;gap:14px;flex-shrink:0;}
+.hbg{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
+.hbg span{display:block;width:22px;height:1.5px;background:var(--black);transition:transform .25s,opacity .25s;}
+.hbg.op span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}.hbg.op span:nth-child(2){opacity:0;}.hbg.op span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+.mob{display:none;flex-direction:column;background:var(--white);border-top:1px solid var(--g200);padding:16px 24px 24px;}
+.mob.op{display:flex;}.mob a{font-size:15px;color:var(--g800);padding:13px 0;border-bottom:1px solid var(--g100);transition:color .2s;}.mob a:last-child{border-bottom:none;}.mob a:hover{color:var(--teal);}
+.mob-cta{margin-top:16px;background:var(--black);color:var(--white)!important;text-align:center;padding:13px!important;border-bottom:none!important;font-weight:600;font-size:11px!important;text-transform:uppercase;}
+.ph{padding:148px 0 0;background:var(--black);position:relative;overflow:hidden;}
+.ph::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.025) 1px,transparent 1px);background-size:28px 28px;}
+.ph-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:stretch;}
+.ph-left{padding-bottom:80px;}
+.ph h1{font-family:var(--fm);font-size:clamp(42px,5vw,76px);font-weight:300;line-height:1.05;color:var(--white);margin:18px 0 24px;}
+.ph h1 em{font-style:normal;font-weight:600;color:var(--teal);}
+.ph-left p{font-size:16px;line-height:1.75;color:rgba(255,255,255,.48);margin-bottom:32px;}
+.apps-box{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);padding:28px 24px;margin-top:36px;}
+.apps-box h3{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:14px;}
+.apps{display:flex;flex-wrap:wrap;gap:8px;}
+.app-tag{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09);padding:6px 14px;font-size:12px;color:rgba(255,255,255,.58);}
+.ph-img{position:relative;overflow:hidden;}
+.ph-img img{width:100%;height:100%;object-fit:cover;display:block;}
+.ph-teal{position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--teal);}
+.prod-section{padding:80px 0;border-bottom:1px solid var(--g200);}
+.prod-section:last-of-type{border-bottom:none;}
+.prod-header{margin-bottom:40px;}
+.prod-header h2{font-family:var(--fm);font-size:clamp(24px,3vw,36px);font-weight:300;color:var(--black);margin-top:14px;}
+.prod-header p{font-size:14px;color:var(--g600);margin-top:8px;max-width:600px;}
+.prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;}
+.prod-item{position:relative;overflow:hidden;cursor:pointer;background:var(--g100);aspect-ratio:1/1;}
+.prod-item img{width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .5s ease;display:block;}
+.prod-item:hover img{transform:scale(1.05);}
+.prod-ov{position:absolute;inset:0;background:rgba(10,10,10,0);transition:background .3s;}
+.prod-item:hover .prod-ov{background:rgba(10,10,10,.3);}
+.prod-label{position:absolute;bottom:0;left:0;right:0;padding:12px 14px;background:linear-gradient(to top,rgba(0,0,0,.75),transparent);opacity:0;transform:translateY(4px);transition:opacity .3s,transform .3s;z-index:1;}
+.prod-item:hover .prod-label{opacity:1;transform:none;}
+.prod-label span{font-size:11px;font-weight:500;color:var(--white);letter-spacing:.04em;}
+.pdf-section{background:var(--g50);border-top:1px solid var(--g200);border-bottom:1px solid var(--g200);padding:56px 0;}
+.pdf-inner{display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;}
+.pdf-left{display:flex;align-items:center;gap:20px;}
+.pdf-icon{width:56px;height:56px;background:var(--black);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.pdf-text h3{font-family:var(--fm);font-size:17px;font-weight:500;color:var(--black);margin-bottom:4px;}
+.pdf-text p{font-size:13px;color:var(--g600);line-height:1.5;}
+.pdf-badge{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);background:rgba(69,136,149,.08);border:1px solid rgba(69,136,149,.2);padding:4px 10px;margin-top:8px;}
+.pdf-btn{display:inline-flex;align-items:center;gap:10px;background:var(--teal);color:var(--white);font-family:var(--fb);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:14px 28px;transition:all .22s;cursor:pointer;border:none;flex-shrink:0;}
+.pdf-btn:hover{background:var(--teal-d);}
+.pdf-modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9000;display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px);}
+.pdf-modal-bg.on{display:flex;}
+.pdf-modal{background:var(--white);width:100%;max-width:460px;position:relative;animation:mslide .25s ease;}
+@keyframes mslide{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:none;}}
+.pdf-modal::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--teal);}
+.pdf-modal-body{padding:40px 36px 36px;}
+.pdf-modal-close{position:absolute;top:14px;right:16px;background:none;border:none;cursor:pointer;color:var(--g400);font-size:22px;line-height:1;transition:color .2s;}
+.pdf-modal-close:hover{color:var(--black);}
+.pdf-modal h3{font-family:var(--fm);font-size:20px;font-weight:400;color:var(--black);margin-bottom:6px;}
+.pdf-modal-sub{font-size:13px;color:var(--g600);margin-bottom:28px;line-height:1.55;}
+.pdf-modal-sub strong{color:var(--teal);}
+.pdf-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.pdf-field{margin-bottom:16px;}
+.pdf-field label{display:block;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--g600);margin-bottom:6px;}
+.pdf-field input{width:100%;border:1px solid var(--g200);padding:11px 14px;font-family:var(--fb);font-size:14px;color:var(--black);outline:none;transition:border-color .2s;background:var(--white);}
+.pdf-field input:focus{border-color:var(--teal);}
+.pdf-field input.err{border-color:#e53e3e;}
+.pdf-field .opt-label{font-size:10px;color:var(--g400);font-weight:400;margin-left:4px;text-transform:none;letter-spacing:0;}
+.pdf-err{font-size:11px;color:#e53e3e;margin-top:4px;display:none;}
+.pdf-err.on{display:block;}
+.pdf-submit{width:100%;background:var(--teal);color:var(--white);border:none;padding:14px;font-family:var(--fb);font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;margin-top:8px;transition:background .22s;display:flex;align-items:center;justify-content:center;gap:10px;}
+.pdf-submit:hover{background:var(--teal-d);}
+.pdf-note{font-size:11px;color:var(--g400);text-align:center;margin-top:14px;line-height:1.5;}
+.pdf-success{display:none;text-align:center;padding:20px 0 8px;}
+.pdf-success.on{display:block;}
+.pdf-success-icon{width:56px;height:56px;background:rgba(69,136,149,.1);border:2px solid var(--teal);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;}
+.pdf-success h4{font-family:var(--fm);font-size:18px;font-weight:400;color:var(--black);margin-bottom:8px;}
+.pdf-success p{font-size:13px;color:var(--g600);line-height:1.6;margin-bottom:24px;}
+.pdf-dl-btn{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:var(--white);font-family:var(--fb);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:13px 24px;transition:background .22s;cursor:pointer;border:none;}
+.pdf-dl-btn:hover{background:var(--teal-d);}
+.scta{background:var(--black);padding:80px 0;}
+.scta-i{display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;}
+.scta h2{font-family:var(--fm);font-size:clamp(24px,3.5vw,40px);font-weight:300;color:var(--white);margin-bottom:8px;}
+.scta p{font-size:15px;color:rgba(255,255,255,.5);}
+.btn-ws{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:var(--white);font-family:var(--fb);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:14px 28px;transition:all .22s;}
+.btn-ws:hover{background:var(--teal-d);}
+.lb{position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:9999;display:none;align-items:center;justify-content:center;}
+.lb.on{display:flex;}
+.lb img{max-width:88vw;max-height:88vh;object-fit:contain;}
+.lb-x{position:fixed;top:16px;right:20px;background:none;border:none;color:rgba(255,255,255,.7);font-size:32px;cursor:pointer;line-height:1;}
+.lb-x:hover{color:var(--white);}
+.lb-p,.lb-n{position:fixed;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);color:var(--white);font-size:22px;width:44px;height:44px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;}
+.lb-p{left:12px;}.lb-n{right:12px;}
+.lb-p:hover,.lb-n:hover{background:var(--teal);}
+.lb-ct{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);font-size:11px;color:rgba(255,255,255,.4);letter-spacing:.1em;}
+#ft{background:var(--black);padding:72px 0 0;}
+.ftg{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:52px;padding-bottom:52px;border-bottom:1px solid rgba(255,255,255,.07);}
+.fli{height:38px;width:auto;display:block;margin-bottom:18px;opacity:.85;}
+.ftag{font-size:13px;line-height:1.65;color:rgba(255,255,255,.38);max-width:240px;}
+.fc h4{font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.22);margin-bottom:18px;}
+.fc ul{list-style:none;}.fc ul li{margin-bottom:9px;}.fc ul li a{font-size:13px;color:rgba(255,255,255,.42);transition:color .2s;}.fc ul li a:hover{color:var(--teal);}
+.fci{display:flex;flex-direction:column;gap:9px;}.fca{font-size:13px;color:rgba(255,255,255,.42);transition:color .2s;}.fca:hover{color:var(--teal);}
+.fbb{padding:22px 0;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;}
+.fbcp{font-size:11px;color:rgba(255,255,255,.18);}
+.fbl{display:flex;gap:18px;}.fbl a{font-size:11px;color:rgba(255,255,255,.18);transition:color .2s;}.fbl a:hover{color:var(--teal);}
+.wa-fab{position:fixed;bottom:28px;right:28px;z-index:8000;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);transition:transform .22s,box-shadow .22s;text-decoration:none;}
+.wa-fab:hover{transform:scale(1.1);box-shadow:0 6px 28px rgba(37,211,102,.55);}
+@media(max-width:1024px){.prod-grid{grid-template-columns:repeat(3,1fr);}.ftg{grid-template-columns:1fr 1fr;}}
+@media(max-width:900px){.nl,.nr .btn-blk{display:none;}.hbg{display:flex;}.wrap,.nav{padding-left:24px;padding-right:24px;}.ph-inner{grid-template-columns:1fr;}.ph-img{display:none;}.prod-grid{grid-template-columns:repeat(3,1fr);}.scta-i{flex-direction:column;align-items:flex-start;}.pdf-inner{flex-direction:column;align-items:flex-start;}}
+@media(max-width:640px){.wrap,.nav{padding-left:18px;padding-right:18px;}.prod-grid{grid-template-columns:repeat(2,1fr);}.ftg{grid-template-columns:1fr;}.fbb{flex-direction:column;align-items:flex-start;}.pdf-row{grid-template-columns:1fr;}.pdf-modal-body{padding:32px 20px 28px;}}</style>
+</head>
+<body>
+<header id="hdr">
+  <div class="nav">
+    <a href="index.html" class="logo">
+      <img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Domestic_glass_Logo__1_.png" alt="Domestic Glass" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+      <span class="logo-fb">Domestic <span>Glass</span></span>
+    </a>
+    <ul class="nl">
+      <li><a href="index.html">Home</a></li>
+      <li class="drop">
+        <a href="#">Solutions <svg width="10" height="10" fill="none" viewBox="0 0 10 10"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
+        <ul class="dd">
+          <li><a href="windows-doors.html">Windows</a></li>
+          <li><a href="railings.html">Railings</a></li>
+          <li><a href="partitions.html">Partitions and Doors</a></li>
+          <li><a href="shower-cubicles.html">Shower Cubicles</a></li>
+          <li><a href="mirrors.html">Mirrors</a></li>
+        </ul>
+      </li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="architects.html">Architects</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nr">
+      <a href="contact.html" class="btn btn-blk" style="padding:9px 18px;font-size:11px;">Book a Visit</a>
+    </div>
+    <button class="hbg" id="hbg"><span></span><span></span><span></span></button>
+  </div>
+  <nav class="mob" id="mob">
+    <a href="index.html">Home</a>
+    <a href="windows-doors.html">Windows</a>
+    <a href="railings.html">Railings</a>
+    <a href="partitions.html">Partitions and Doors</a>
+    <a href="shower-cubicles.html">Shower Cubicles</a>
+    <a href="mirrors.html">Mirrors</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="about.html">About Us</a>
+    <a href="architects.html">Architects</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="mob-cta">Book a Site Visit</a>
+  </nav>
+</header>
+
+<section class="ph">
+  <div class="wrap">
+    <div class="ph-inner">
+      <div class="ph-left">
+        <span class="eyebrow-w rev">Solutions</span>
+        <h1 class="rev d1">Premium <em>Windows</em></h1>
+        <p class="rev d2">European aluminium window systems designed for Indian climates. Energy-efficient, slim-profile and thermally broken — available in six system families.</p>
+        <div class="apps-box rev d3">
+          <h3>Window Systems</h3>
+          <div class="apps">
+            <span class="app-tag">D40</span>
+            <span class="app-tag">Galene GTi</span>
+            <span class="app-tag">Louver</span>
+            <span class="app-tag">Lumeal GAn</span>
+            <span class="app-tag">Topaze GB+</span>
+            <span class="app-tag">Topaze GB24</span>
+          </div>
+        </div>
+      </div>
+      <div class="ph-img rev d2">
+        <img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Windows/Window-D40.JPG" alt="Premium Windows" loading="eager" onerror="this.src='https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/D40_0136.jpg'"/>
+        <div class="ph-teal"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- D40 -->
+<section class="prod-section">
+  <div class="wrap">
+    <div class="prod-header rev">
+      <span class="teal-bar"></span>
+      <span class="eyebrow-g">Windows</span>
+      <h2>D40 Window System</h2>
+      <p>A versatile casement and sliding window system with a 40mm profile depth. Ideal for residential applications requiring slim sightlines.</p>
+    </div>
+    <div class="prod-grid">
+      <div class="prod-item" onclick="lbOpen(d40,0)"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Windows/Window-D40.JPG" alt="D40 Window System" loading="lazy"/><div class="prod-ov"></div><div class="prod-label"><span>D40 Window System</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALENE GTi -->
+<section class="prod-section">
+  <div class="wrap">
+    <div class="prod-header rev">
+      <span class="teal-bar"></span>
+      <span class="eyebrow-g">Windows</span>
+      <h2>Galene GTi Window System</h2>
+      <p>A high-performance tilt and turn window system offering excellent thermal and acoustic insulation. Suitable for high-rise and premium residential projects.</p>
+    </div>
+    <div class="prod-grid">
+      <div class="prod-item" onclick="lbOpen(galene,0)"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Windows/Window-GALENEGTi.JPG" alt="Galene GTi Window System" loading="lazy"/><div class="prod-ov"></div><div class="prod-label"><span>Galene GTi</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- LOUVER -->
+<section class="prod-section">
+  <div class="wrap">
+    <div class="prod-header rev">
+      <span class="teal-bar"></span>
+      <span class="eyebrow-g">Windows</span>
+      <h2>Louver Window System</h2>
+      <p>Horizontal louvred glass blades for maximum ventilation with privacy. Ideal for bathrooms, kitchens and utility spaces.</p>
+    </div>
+    <div class="prod-grid">
+      <div class="prod-item" onclick="lbOpen(louver,0)"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Windows/Louver.JPG" alt="Louver Window System" loading="lazy"/><div class="prod-ov"></div><div class="prod-label"><span>Louver System</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- LUMEAL GAn -->
+<section class="prod-section">
+  <div class="wrap">
+    <div class="prod-header rev">
+      <span class="teal-bar"></span>
+      <span class="eyebrow-g">Windows</span>
+      <h2>Lumeal GAn Window System</h2>
+      <p>A premium lift-and-slide window system delivering large glass panels with ultra-slim profiles. Maximises natural light and views.</p>
+    </div>
+    <div class="prod-grid">
+      <div class="prod-item" onclick="lbOpen(lumeal,0)"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Windows/Window-LUMEALGAn.JPG" alt="Lumeal GAn Window System" loading="lazy"/><div class="prod-ov"></div><div class="prod-label"><span>Lumeal GAn</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TOPAZE GB+ -->
+<section class="prod-section">
+  <div class="wrap">
+    <div class="prod-header rev">
+      <span class="teal-bar"></span>
+      <span class="eyebrow-g">Windows</span>
+      <h2>Topaze GB+ Window System</h2>
+      <p>A robust aluminium window system offering excellent weather performance. Suitable for large openings in high-wind and coastal environments.</p>
+    </div>
+    <div class="prod-grid">
+      <div class="prod-item" onclick="lbOpen(topazplus,0)"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Windows/Window-TOPAZEGB+.JPG" alt="Topaze GB+ Window System" loading="lazy"/><div class="prod-ov"></div><div class="prod-label"><span>Topaze GB+</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TOPAZE GB24 -->
+<section class="prod-section">
+  <div class="wrap">
+    <div class="prod-header rev">
+      <span class="teal-bar"></span>
+      <span class="eyebrow-g">Windows</span>
+      <h2>Topaze GB24 Window System</h2>
+      <p>A slim 24mm profile window system for applications where minimal sight lines are essential. Contemporary aesthetics with reliable performance.</p>
+    </div>
+    <div class="prod-grid">
+      <div class="prod-item" onclick="lbOpen(topaz24,0)"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Windows/Window-TOPAZEGB24.JPG" alt="Topaze GB24 Window System" loading="lazy"/><div class="prod-ov"></div><div class="prod-label"><span>Topaze GB24</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="pdf-section">
+  <div class="wrap">
+    <div class="pdf-inner rev">
+      <div class="pdf-left">
+        <div class="pdf-icon"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="white" stroke-width="1.5" stroke-linecap="round"/><polyline points="14,2 14,8 20,8" stroke="white" stroke-width="1.5" stroke-linecap="round"/><line x1="16" y1="13" x2="8" y2="13" stroke="white" stroke-width="1.5" stroke-linecap="round"/><line x1="16" y1="17" x2="8" y2="17" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <div class="pdf-text"><h3>Download Our Windows Portfolio</h3><p>Detailed system specifications and technical data sheets.</p><span class="pdf-badge">PDF — Free Download</span></div>
+      </div>
+      <button class="pdf-btn" onclick="openPdfModal()">Download Portfolio PDF</button>
+    </div>
+  </div>
+</section>
+
+<div class="pdf-modal-bg" id="pdfModal">
+  <div class="pdf-modal">
+    <button class="pdf-modal-close" onclick="closePdfModal()">&#215;</button>
+    <div class="pdf-modal-body">
+      <div id="pdfForm">
+        <h3>Get the Free PDF</h3>
+        <p class="pdf-modal-sub">Enter your details to download our <strong>Windows Portfolio</strong>.</p>
+        <div class="pdf-row">
+          <div class="pdf-field"><label>Name *</label><input type="text" id="pdfName" placeholder="Your full name"/><div class="pdf-err" id="nameErr">Please enter your name.</div></div>
+          <div class="pdf-field"><label>Mobile *</label><input type="tel" id="pdfMobile" placeholder="+91 XXXXX XXXXX"/><div class="pdf-err" id="mobileErr">Enter a valid 10-digit number.</div></div>
+        </div>
+        <div class="pdf-row">
+          <div class="pdf-field"><label>Firm Name <span class="opt-label">(optional)</span></label><input type="text" id="pdfFirm" placeholder="Architecture / Design firm"/></div>
+          <div class="pdf-field"><label>Location <span class="opt-label">(optional)</span></label><input type="text" id="pdfLocation" placeholder="City / Area"/></div>
+        </div>
+        <button class="pdf-submit" onclick="submitPdfForm()">Get PDF Now</button>
+        <p class="pdf-note">We respect your privacy. No spam, ever.</p>
+      </div>
+      <div class="pdf-success" id="pdfSuccess">
+        <div class="pdf-success-icon"><svg width="24" height="24" fill="none" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" stroke="#458895" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h4>Your PDF is Ready</h4>
+        <p>Thank you! Our team will follow up to answer any questions about our Windows solutions.</p>
+        <button class="pdf-dl-btn" onclick="triggerDownload()">Download PDF</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="lb" id="lb">
+  <button class="lb-x" onclick="lbClose()">&#215;</button>
+  <button class="lb-p" onclick="lbGo(-1)">&#8249;</button>
+  <img id="lbI" src="" alt=""/>
+  <button class="lb-n" onclick="lbGo(1)">&#8250;</button>
+  <div class="lb-ct" id="lbC"></div>
+</div>
+
+<section class="scta">
+  <div class="wrap scta-i">
+    <div class="rev"><h2>Discuss Your Window Requirements</h2><p>Our team will recommend the right system for your project.</p></div>
+    <a href="contact.html" class="btn-ws rev d2">Get in Touch</a>
+  </div>
+</section>
+
+<footer id="ft">
+  <div class="wrap">
+    <div class="ftg">
+      <div><img class="fli" src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Domestic_glass_Logo__1_.png" alt="Domestic Glass" onerror="this.style.display='none'"/><p class="ftag">Designing, fabricating, and installing custom glass solutions across India since 1991.</p></div>
+      <div class="fc"><h4>Solutions</h4><ul><li><a href="windows-doors.html">Windows</a></li><li><a href="railings.html">Railings</a></li><li><a href="partitions.html">Partitions and Doors</a></li><li><a href="shower-cubicles.html">Shower Cubicles</a></li><li><a href="mirrors.html">Mirrors</a></li></ul></div>
+      <div class="fc"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="blog.html">Blog</a></li><li><a href="architects.html">Architects</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="fc"><h4>Contact</h4><div class="fci"><a href="tel:+919553371114" class="fca">+91 95533 71114</a><a href="mailto:info@domesticglass.in" class="fca">info@domesticglass.in</a><span class="fca" style="cursor:default;">Hyderabad, Telangana</span></div></div>
+    </div>
+    <div class="fbb"><p class="fbcp">2025 Domestic Glass. All rights reserved.</p><div class="fbl"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a></div></div>
+  </div>
+</footer>
+<a href="https://wa.me/919553371114" target="_blank" rel="noopener" class="wa-fab" aria-label="Chat on WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.121.549 4.112 1.515 5.845L.057 23.428a.75.75 0 0 0 .921.944l5.798-1.456A11.941 11.941 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-1.9 0-3.7-.51-5.25-1.398l-.377-.213-3.906.98.994-3.813-.228-.374A9.718 9.718 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
+</a>
+
+<script>
+const hdr=document.getElementById("hdr");
+window.addEventListener("scroll",()=>hdr.classList.toggle("sc",window.scrollY>20));
+const hbg=document.getElementById("hbg"),mob=document.getElementById("mob");
+hbg.addEventListener("click",()=>{hbg.classList.toggle("op");mob.classList.toggle("op");});
+const ro=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("on");ro.unobserve(e.target);}});},{threshold:.08,rootMargin:"0px 0px -20px 0px"});
+document.querySelectorAll(".rev").forEach(el=>ro.observe(el));
+document.querySelectorAll(".ph .rev").forEach(el=>el.classList.add("on"));
+const BASE="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/";
+let lbSet=[],lbIdx=0;
+function lbOpen(arr,i){lbSet=arr;lbIdx=i;document.getElementById("lbI").src=BASE+arr[i];document.getElementById("lbC").textContent=(i+1)+" / "+arr.length;document.getElementById("lb").classList.add("on");document.body.style.overflow="hidden";}
+function lbClose(){document.getElementById("lb").classList.remove("on");document.body.style.overflow="";}
+function lbGo(d){lbIdx=(lbIdx+d+lbSet.length)%lbSet.length;document.getElementById("lbI").src=BASE+lbSet[lbIdx];document.getElementById("lbC").textContent=(lbIdx+1)+" / "+lbSet.length;}
+document.getElementById("lb").addEventListener("click",e=>{if(e.target===e.currentTarget)lbClose();});
+document.addEventListener("keydown",e=>{if(!document.getElementById("lb").classList.contains("on"))return;if(e.key==="ArrowRight")lbGo(1);if(e.key==="ArrowLeft")lbGo(-1);if(e.key==="Escape")lbClose();});
+function openPdfModal(){document.getElementById("pdfModal").classList.add("on");document.body.style.overflow="hidden";}
+function closePdfModal(){document.getElementById("pdfModal").classList.remove("on");document.body.style.overflow="";setTimeout(()=>{document.getElementById("pdfForm").style.display="block";document.getElementById("pdfSuccess").classList.remove("on");["pdfName","pdfMobile","pdfFirm","pdfLocation"].forEach(id=>{document.getElementById(id).value="";});},300);}
+document.getElementById("pdfModal").addEventListener("click",e=>{if(e.target===e.currentTarget)closePdfModal();});
+function submitPdfForm(){
+  const name=document.getElementById("pdfName").value.trim();
+  const mobile=document.getElementById("pdfMobile").value.trim().replace(/\D/g,"");
+  const firm=document.getElementById("pdfFirm").value.trim();
+  const location=document.getElementById("pdfLocation").value.trim();
+  let valid=true;
+  if(!name){document.getElementById("pdfName").classList.add("err");document.getElementById("nameErr").classList.add("on");valid=false;}else{document.getElementById("pdfName").classList.remove("err");document.getElementById("nameErr").classList.remove("on");}
+  if(mobile.length<10){document.getElementById("pdfMobile").classList.add("err");document.getElementById("mobileErr").classList.add("on");valid=false;}else{document.getElementById("pdfMobile").classList.remove("err");document.getElementById("mobileErr").classList.remove("on");}
+  if(!valid)return;
+  console.log("PDF Lead:",{name,mobile:document.getElementById("pdfMobile").value.trim(),firm,location});
+  document.getElementById("pdfForm").style.display="none";
+  document.getElementById("pdfSuccess").classList.add("on");
+}
+function triggerDownload(){const url="#";if(url!=="#"){const a=document.createElement("a");a.href=url;a.download="Domestic-Glass-Portfolio.pdf";a.click();}else{alert("PDF coming soon! Our team will reach out to you shortly.");}}
+const d40=['Window-D40.JPG'];
+const galene=['Window-GALENEGTi.JPG'];
+const louver=['Louver.JPG'];
+const lumeal=['Window-LUMEALGAn.JPG'];
+const topazplus=['Window-TOPAZEGB+.JPG'];
+const topaz24=['Window-TOPAZEGB24.JPG'];
+</script>
+</body>
+</html>

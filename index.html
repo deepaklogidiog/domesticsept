@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Domestic Glass – Custom Glass Solutions Since 1991</title>
+<meta name="description" content="Custom glass solutions across India. Windows, doors, railings, partitions, shower cubicles and mirrors. 35+ years experience. Book a free site visit."/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --black:#0A0A0A;--white:#FFFFFF;
+  --g50:#F8F8F8;--g100:#F2F2F2;--g200:#E4E4E4;--g400:#9A9A9A;--g600:#5A5A5A;--g800:#2A2A2A;
+  --teal:#458895;--teal-d:#336670;--teal-l:rgba(69,136,149,.1);
+  --fd:'Cormorant Garamond',Georgia,serif;
+  --fm:'Montserrat',system-ui,sans-serif;
+  --fb:'DM Sans',system-ui,sans-serif;
+}
+html{scroll-behavior:smooth;}
+body{font-family:var(--fb);font-size:16px;line-height:1.6;color:var(--black);background:var(--white);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+img{max-width:100%;display:block;}
+a{text-decoration:none;color:inherit;}
+
+/* REVEAL */
+.rev{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease;}
+.rev.on{opacity:1;transform:none;}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
+
+/* UTIL */
+.wrap{max-width:1200px;margin:0 auto;padding:0 48px;}
+.eyebrow{font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--teal);}
+.eyebrow-g{font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--g400);}
+.eyebrow-w{font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.45);}
+.teal-bar{display:block;width:36px;height:2px;background:var(--teal);margin-bottom:18px;}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--fb);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:14px 28px;transition:all .22s;cursor:pointer;border:none;}
+.btn-blk{background:var(--black);color:var(--white);}.btn-blk:hover{background:var(--teal);}
+.btn-ol{background:transparent;color:var(--black);border:1px solid var(--g200);}.btn-ol:hover{border-color:var(--teal);color:var(--teal);}
+.btn-ol-w{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,.3);}.btn-ol-w:hover{border-color:rgba(255,255,255,.7);}
+.btn-teal{background:var(--teal);color:var(--white);}.btn-teal:hover{background:var(--teal-d);}
+.btn-w{background:var(--white);color:var(--teal);}.btn-w:hover{background:var(--black);color:var(--white);}
+
+/* ===== HEADER ===== */
+#hdr{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--g200);transition:box-shadow .3s;}
+#hdr.sc{box-shadow:0 4px 24px rgba(0,0,0,.07);}
+.nav{max-width:1200px;margin:0 auto;padding:0 48px;height:68px;display:flex;align-items:center;justify-content:space-between;gap:20px;}
+.logo img{height:40px;width:auto;}
+.logo-fb{font-family:var(--fd);font-size:18px;color:var(--black);display:none;}
+.logo-fb span{color:var(--teal);}
+.nl{display:flex;align-items:center;list-style:none;}
+.nl>li>a{font-size:12.5px;font-weight:500;letter-spacing:.04em;color:var(--g600);padding:8px 14px;display:flex;align-items:center;gap:4px;transition:color .2s;}
+.nl>li>a:hover,.nl>li.act>a{color:var(--black);}
+.drop{position:relative;}
+.drop>a svg{transition:transform .2s;}.drop:hover>a svg{transform:rotate(180deg);}
+.dd{position:absolute;top:calc(100% + 8px);left:0;background:var(--white);border:1px solid var(--g200);min-width:210px;padding:8px 0;box-shadow:0 16px 40px rgba(0,0,0,.10);opacity:0;visibility:hidden;transform:translateY(-6px);transition:all .2s;list-style:none;}
+.drop:hover .dd{opacity:1;visibility:visible;transform:none;}
+.dd li a{display:block;padding:10px 18px;font-size:12.5px;color:var(--g600);transition:background .15s,color .15s;}
+.dd li a:hover{background:var(--g50);color:var(--teal);}
+.nr{display:flex;align-items:center;gap:14px;flex-shrink:0;}
+.nph{font-size:12.5px;font-weight:500;color:var(--g600);display:flex;align-items:center;gap:6px;transition:color .2s;}
+.nph:hover{color:var(--teal);}
+.hbg{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
+.hbg span{display:block;width:22px;height:1.5px;background:var(--black);transition:transform .25s,opacity .25s;}
+.hbg.op span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+.hbg.op span:nth-child(2){opacity:0;}
+.hbg.op span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+.mob{display:none;flex-direction:column;background:var(--white);border-top:1px solid var(--g200);padding:16px 24px 24px;}
+.mob.op{display:flex;}
+.mob a{font-size:15px;color:var(--g800);padding:13px 0;border-bottom:1px solid var(--g100);transition:color .2s;}
+.mob a:last-child{border-bottom:none;}.mob a:hover{color:var(--teal);}
+.mob-cta{margin-top:16px;background:var(--black);color:var(--white)!important;text-align:center;padding:13px!important;border-bottom:none!important;font-weight:600;letter-spacing:.06em;font-size:11px!important;text-transform:uppercase;}
+
+/* ===== HERO ===== */
+#hero{padding-top:68px;min-height:100vh;display:grid;grid-template-columns:1fr 1fr;background:var(--white);}
+.hl{padding:90px 56px 72px 64px;display:flex;flex-direction:column;justify-content:center;}
+.hl h1{font-family:var(--fm);font-size:clamp(36px,4.4vw,64px);font-weight:300;line-height:1.12;color:var(--black);margin:20px 0 24px;letter-spacing:-.02em;}
+.hl h1 em{font-style:normal;font-weight:600;color:var(--teal);}
+.hl p{font-size:16px;line-height:1.75;color:var(--g600);max-width:420px;margin-bottom:40px;}
+.hcta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:56px;}
+.hstats{display:flex;gap:36px;padding-top:36px;border-top:1px solid var(--g200);flex-wrap:wrap;}
+.hsn{font-family:var(--fm);font-size:38px;font-weight:300;line-height:1;color:var(--black);letter-spacing:-.02em;}
+.hsn sup{font-size:18px;color:var(--teal);}
+.hsl{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--g400);margin-top:5px;}
+
+/* SLIDESHOW */
+.hr{position:relative;overflow:hidden;background:var(--black);}
+.slides{position:absolute;inset:0;}
+.slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1s ease;}
+.slide.on{opacity:1;animation:kbz 7s ease forwards;}
+@keyframes kbz{from{transform:scale(1);}to{transform:scale(1.05);}}
+.slide::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.68) 0%,rgba(0,0,0,.1) 60%,transparent 100%);}
+.scap{position:absolute;bottom:44px;left:36px;right:36px;z-index:2;}
+.stag{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);border:1px solid rgba(69,136,149,.5);padding:4px 12px;margin-bottom:8px;}
+.stitle{font-family:var(--fd);font-size:20px;font-weight:300;font-style:italic;color:rgba(255,255,255,.88);line-height:1.3;}
+.sdots{position:absolute;top:22px;right:22px;display:flex;gap:7px;z-index:3;}
+.sdot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.3);border:none;cursor:pointer;padding:0;transition:background .3s,transform .3s;}
+.sdot.on{background:var(--teal);transform:scale(1.4);}
+.steal{position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--teal);z-index:3;}
+
+/* ===== MARQUEE ===== */
+.mq{background:var(--black);padding:16px 0;overflow:hidden;border-bottom:1px solid rgba(255,255,255,.05);}
+.mqt{display:flex;gap:56px;animation:mqs 30s linear infinite;width:max-content;}
+@keyframes mqs{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+.mqi{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.32);white-space:nowrap;display:flex;align-items:center;gap:56px;}
+.mqi::after{content:'·';color:var(--teal);}
+
+/* ===== WHAT WE SOLVE ===== */
+#solve{background:var(--g50);padding:110px 0;}
+.sh{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:end;margin-bottom:64px;}
+.sh h2{font-family:var(--fm);font-size:clamp(26px,3vw,40px);font-weight:300;line-height:1.18;color:var(--black);margin-top:18px;max-width:400px;}
+.sh p{font-size:15px;line-height:1.75;color:var(--g600);}
+.sitems{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--g200);}
+.si{padding:32px 24px;border-right:1px solid var(--g200);position:relative;overflow:hidden;transition:background .2s;}
+.si:last-child{border-right:none;}
+.si::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--teal);transform:scaleX(0);transform-origin:left;transition:transform .3s;}
+.si:hover::before{transform:scaleX(1);}.si:hover{background:var(--white);}
+.sin{font-family:var(--fd);font-size:13px;font-weight:300;color:var(--g400);letter-spacing:.06em;margin-bottom:24px;}
+.sii{width:34px;height:34px;margin-bottom:18px;border:1px solid var(--g200);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:border-color .2s;}
+.si:hover .sii{border-color:var(--teal);}
+.si h3{font-family:var(--fm);font-size:14px;font-weight:600;line-height:1.3;color:var(--black);margin-bottom:8px;}
+.si p{font-size:12px;line-height:1.6;color:var(--g400);}
+
+/* ===== SOLUTIONS ===== */
+#solutions{background:var(--white);padding:110px 0;}
+.sg{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:52px;}
+.sc2{background:var(--g50);border:1px solid var(--g200);padding:32px 28px 28px;display:flex;flex-direction:column;gap:14px;transition:transform .22s,box-shadow .22s,border-color .22s;position:relative;overflow:hidden;}
+.sc2::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--teal);transform:scaleX(0);transform-origin:left;transition:transform .3s;}
+.sc2:hover::after{transform:scaleX(1);}
+.sc2:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.07);border-color:var(--g200);}
+.sc2-icon{width:52px;height:52px;background:var(--black);display:flex;align-items:center;justify-content:center;color:var(--white);flex-shrink:0;margin-bottom:4px;}
+.sc2 h3{font-family:var(--fm);font-size:15px;font-weight:600;color:var(--black);}
+.sc2 p{font-size:12.5px;color:var(--g600);line-height:1.6;flex:1;}
+.sc2-link{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);display:flex;align-items:center;gap:5px;margin-top:4px;}
+.sc2:hover .sc2-link{gap:9px;}
+
+/* ===== WHY DG ===== */
+#why{background:var(--black);padding:110px 0;position:relative;overflow:hidden;}
+#why::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.025) 1px,transparent 1px);background-size:28px 28px;pointer-events:none;}
+.wi{display:grid;grid-template-columns:1fr 1fr;gap:88px;align-items:center;position:relative;z-index:1;}
+.wl h2{font-family:var(--fm);font-size:clamp(26px,3.2vw,42px);font-weight:300;line-height:1.18;color:var(--white);margin:16px 0 22px;}
+.wl>p{font-size:15px;line-height:1.75;color:rgba(255,255,255,.42);max-width:380px;margin-bottom:36px;}
+.pills{display:flex;flex-direction:column;}
+.pill{display:flex;align-items:center;gap:14px;padding:15px 0;border-bottom:1px solid rgba(255,255,255,.06);transition:padding-left .2s;}
+.pill:first-child{padding-top:0;}.pill:last-child{padding-bottom:0;border-bottom:none;}
+.pill:hover{padding-left:5px;}
+.pdot{width:6px;height:6px;border-radius:50%;background:var(--teal);flex-shrink:0;}
+.pill span{font-size:13.5px;color:rgba(255,255,255,.72);}
+.wr{display:flex;flex-direction:column;gap:2px;}
+.wp{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);padding:28px 32px;transition:background .22s;}
+.wp:hover{background:rgba(69,136,149,.1);}
+.wpn{font-family:var(--fm);font-size:42px;font-weight:300;color:var(--white);line-height:1;letter-spacing:-.02em;}
+.wpn span{color:var(--teal);}
+.wpl{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:4px;}
+.wqt{font-family:var(--fm);font-size:15px;font-weight:300;font-style:italic;color:rgba(255,255,255,.55);line-height:1.75;}
+
+/* ===== PROJECTS ===== */
+
+.ph{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:40px;flex-wrap:wrap;}
+.ptabs{display:flex;border-bottom:1px solid var(--g200);margin-bottom:44px;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.pt{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--g400);padding:11px 22px;cursor:pointer;background:none;border:none;border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;transition:color .2s,border-color .2s;}
+.pt.on,.pt:hover{color:var(--black);border-bottom-color:var(--teal);}
+
+
+.pc img{width:100%;height:100%;object-fit:cover;transition:transform .55s ease;}
+
+.pov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.72) 0%,rgba(0,0,0,.12) 55%,transparent 100%);z-index:1;}
+.phov{position:absolute;inset:0;background:rgba(69,136,149,.12);opacity:0;transition:opacity .25s;z-index:2;}
+
+.pm{position:absolute;bottom:0;left:0;right:0;padding:22px 26px;z-index:3;}
+
+
+
+
+
+/* ===== REVIEWS ===== */
+#reviews{background:var(--g50);padding:110px 0;}
+.rh{text-align:center;margin-bottom:60px;}
+.rh h2{font-family:var(--fm);font-size:clamp(26px,3.5vw,42px);font-weight:300;color:var(--black);margin-top:14px;line-height:1.18;}
+.rg{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.rc{background:var(--white);border:1px solid var(--g200);padding:36px 32px 28px;display:flex;flex-direction:column;gap:18px;transition:transform .25s,box-shadow .25s;position:relative;}
+.rc::before{content:'';position:absolute;top:0;left:32px;right:32px;height:2px;background:var(--teal);opacity:0;transition:opacity .25s;}
+.rc:hover::before{opacity:1;}
+.rc:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.07);}
+.rq{font-family:var(--fm);font-size:40px;color:var(--teal);line-height:.8;flex-shrink:0;font-weight:300;}
+.rt{font-family:var(--fb);font-size:14px;font-weight:300;font-style:italic;line-height:1.75;color:var(--g600);flex:1;}
+.ra{display:flex;align-items:center;gap:12px;padding-top:18px;border-top:1px solid var(--g100);}
+.rav{width:36px;height:36px;border-radius:50%;background:var(--black);color:var(--white);display:flex;align-items:center;justify-content:center;font-family:var(--fm);font-size:13px;flex-shrink:0;font-weight:600;}
+.rn{font-size:13px;font-weight:600;color:var(--black);}
+.ro{font-size:11px;color:var(--g400);margin-top:2px;}
+
+/* ===== CTA BANNER ===== */
+#ctab{background:var(--teal);padding:90px 0;position:relative;overflow:hidden;}
+#ctab::before{content:'';position:absolute;width:500px;height:500px;border-radius:50%;top:-180px;right:-80px;background:rgba(255,255,255,.05);pointer-events:none;}
+.ctai{display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;position:relative;z-index:1;}
+.ctai h2{font-family:var(--fm);font-size:clamp(24px,3.5vw,44px);font-weight:300;line-height:1.18;color:var(--white);margin-bottom:10px;}
+.ctai p{font-size:15px;color:rgba(255,255,255,.62);}
+.ctaa{display:flex;gap:12px;flex-wrap:wrap;}
+
+/* ===== FOOTER ===== */
+#ft{background:var(--black);padding:72px 0 0;}
+.ft{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:52px;padding-bottom:52px;border-bottom:1px solid rgba(255,255,255,.07);}
+.fli{height:38px;width:auto;display:block;margin-bottom:18px;opacity:.85;}
+.ftag{font-size:13px;line-height:1.65;color:rgba(255,255,255,.38);max-width:240px;margin-bottom:24px;}
+.fso{display:flex;gap:10px;}
+.fsl{width:32px;height:32px;border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.38);font-size:11px;transition:border-color .2s,color .2s;}
+.fsl:hover{border-color:var(--teal);color:var(--teal);}
+.fc h4{font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.22);margin-bottom:18px;}
+.fc ul{list-style:none;}
+.fc ul li{margin-bottom:9px;}
+.fc ul li a{font-size:13px;color:rgba(255,255,255,.42);transition:color .2s;}
+.fc ul li a:hover{color:var(--teal);}
+.fci{display:flex;flex-direction:column;gap:9px;}
+.fca{font-size:13px;color:rgba(255,255,255,.42);display:flex;gap:7px;transition:color .2s;}
+.fca:hover{color:var(--teal);}
+.fb{padding:22px 0;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;}
+.fbcp{font-size:11px;color:rgba(255,255,255,.18);}
+.fbl{display:flex;gap:18px;}
+.fbl a{font-size:11px;color:rgba(255,255,255,.18);transition:color .2s;}
+.fbl a:hover{color:var(--teal);}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1024px){
+  #hero{grid-template-columns:1fr;}
+  .hr{min-height:50vh;}
+  .sitems{grid-template-columns:repeat(3,1fr);}
+  .si{border-bottom:1px solid var(--g200);}
+  .sg{grid-template-columns:repeat(3,1fr);}
+  .wi{grid-template-columns:1fr;gap:52px;}
+  .ft{grid-template-columns:1fr 1fr;}
+  .sh{grid-template-columns:1fr;gap:28px;}
+}
+@media(max-width:900px){
+  .nl,.nr .btn-blk,.nph{display:none;}
+  .hbg{display:flex;}
+  .wrap,.nav{padding-left:24px;padding-right:24px;}
+  .hl{padding:64px 24px 52px;}
+  
+  .rg{grid-template-columns:repeat(2,1fr);}
+  .ctai{flex-direction:column;align-items:flex-start;}
+  .ph{flex-direction:column;align-items:flex-start;}
+}
+@media(max-width:640px){
+  .wrap,.nav{padding-left:18px;padding-right:18px;}
+  .hl{padding:52px 18px 44px;}
+  .sitems{grid-template-columns:repeat(2,1fr);}
+  .sg{grid-template-columns:repeat(2,1fr);}
+  
+  .rg{grid-template-columns:1fr;}
+  .hstats{gap:24px;}
+  .ft{grid-template-columns:1fr;}
+  .fb{flex-direction:column;align-items:flex-start;}
+  #why{padding:80px 0;}
+  #projects,#reviews,#solutions,#solve,#ctab{padding:80px 0;}
+}
+
+/* Instagram grid responsive */
+#insta-grid{grid-template-columns:repeat(6,1fr) !important;}
+@media(max-width:900px){#insta-grid{grid-template-columns:repeat(3,1fr) !important;}}
+@media(max-width:640px){#insta-grid{grid-template-columns:repeat(3,1fr) !important;}}
+@media(prefers-reduced-motion:reduce){
+  .rev,.mqt,.slide{animation:none!important;transition:none!important;opacity:1!important;transform:none!important;}
+}
+.wa-fab{position:fixed;bottom:28px;right:28px;z-index:8000;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);transition:transform .22s,box-shadow .22s;text-decoration:none;}
+.wa-fab:hover{transform:scale(1.1);box-shadow:0 6px 28px rgba(37,211,102,.55);}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="hdr">
+  <div class="nav">
+    <a href="index.html" class="logo">
+      <img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Domestic_glass_Logo__1_.png" alt="Domestic Glass" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+      <span class="logo-fb">Domestic <span>Glass</span></span>
+    </a>
+    <ul class="nl">
+      <li><a href="index.html">Home</a></li>
+      <li class="drop">
+        <a href="#">Solutions <svg width="10" height="10" fill="none" viewBox="0 0 10 10"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
+        <ul class="dd">
+          <li><a href="windows-doors.html">Windows</a></li>
+          <li><a href="railings.html">Railings</a></li>
+          <li><a href="partitions.html">Partitions and Doors</a></li>
+          <li><a href="shower-cubicles.html">Shower Cubicles</a></li>
+          <li><a href="mirrors.html">Mirrors</a></li>
+        </ul>
+      </li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="architects.html">Architects</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nr">
+      <a href="contact.html" class="btn btn-blk" style="padding:9px 18px;font-size:11px;">Book a Visit</a>
+    </div>
+    <button class="hbg" id="hbg"><span></span><span></span><span></span></button>
+  </div>
+  <nav class="mob" id="mob">
+    <a href="index.html">Home</a>
+    <a href="windows-doors.html">Windows</a>
+    <a href="railings.html">Railings</a>
+    <a href="partitions.html">Partitions and Doors</a>
+    <a href="shower-cubicles.html">Shower Cubicles</a>
+    <a href="mirrors.html">Mirrors</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="about.html">About Us</a>
+    <a href="architects.html">Architects</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="mob-cta">Book a Site Visit</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hl">
+    <span class="eyebrow rev">Custom Glass Solutions Since 1991</span>
+    <h1 class="rev d1">Precision Glass Solutions<br/>for Spaces That<br/><em>Demand More</em></h1>
+    <p class="rev d2">From bespoke residences to landmark commercial interiors, Domestic Glass partners with architects, interior designers, builders, and homeowners to design, fabricate, and install premium glass systems that combine aesthetics, performance, and precision.</p>
+    <div class="hcta rev d3">
+      <a href="contact.html" class="btn btn-blk">Book a Consultation</a>
+      
+      <a href="#" onclick="openCatModal();return false;" class="btn btn-ol" style="gap:7px;" onclick="openCatModal();return false;" href="#"><svg width="13" height="13" fill="none" viewBox="0 0 13 13"><rect x="2" y="2" width="9" height="9" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M2 5h9M5 5v6" stroke="currentColor" stroke-width="1.2"/></svg>Download Catalogue</a>
+    </div>
+    <div class="hstats rev d4">
+      <div><div class="hsn">35<sup>+</sup></div><div class="hsl">Years Experience</div></div>
+      <div><div class="hsn">500<sup>+</sup></div><div class="hsl">Projects Done</div></div>
+      <div><div class="hsn">5</div><div class="hsl">Solution Types</div></div>
+    </div>
+  </div>
+
+  <div class="hr">
+    <div class="slides">
+      <div class="slide on" style="background-image:url('https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/002.jpg')">
+        <div class="scap"><span class="stag">Commercial</span><p class="stitle">Conference Room Glass Partition</p></div>
+      </div>
+      <div class="slide" style="background-image:url('https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/IMG_0084%20(1).jpg')">
+        <div class="scap"><span class="stag">Office</span><p class="stitle">Framed Glass Partition System</p></div>
+      </div>
+      <div class="slide" style="background-image:url('https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/IMG_0153%20copy.jpg')">
+        <div class="scap"><span class="stag">Residential</span><p class="stitle">Custom Glass, Private Villa</p></div>
+      </div>
+      <div class="slide" style="background-image:url('https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/IMG_0255.jpg')">
+        <div class="scap"><span class="stag">Residential</span><p class="stitle">Sculptural Custom Mirror</p></div>
+      </div>
+    </div>
+    <div class="steal"></div>
+    <div class="sdots">
+      <button class="sdot on" onclick="gs(0)"></button>
+      <button class="sdot" onclick="gs(1)"></button>
+      <button class="sdot" onclick="gs(2)"></button>
+      <button class="sdot" onclick="gs(3)"></button>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="mq">
+  <div class="mqt">
+    <span class="mqi">Windows and Doors</span><span class="mqi">Glass Railings</span><span class="mqi">Partitions</span><span class="mqi">Shower Cubicles</span><span class="mqi">Custom Mirrors</span><span class="mqi">35+ Years</span><span class="mqi">500+ Projects</span>
+    <span class="mqi">Windows and Doors</span><span class="mqi">Glass Railings</span><span class="mqi">Partitions</span><span class="mqi">Shower Cubicles</span><span class="mqi">Custom Mirrors</span><span class="mqi">35+ Years</span><span class="mqi">500+ Projects</span>
+  </div>
+</div>
+
+<!-- WHAT WE SOLVE -->
+<section id="solve">
+  <div class="wrap">
+    <div class="sh">
+      <div class="rev">
+        <span class="teal-bar"></span>
+        <span class="eyebrow-g">Design Challenges We Solve</span>
+        <h2>Every project has unique requirements.</h2>
+      </div>
+      <p class="rev d2">Our role is to engineer glass solutions that improve natural light, define spaces, enhance safety, and elevate every interior.</p>
+    </div>
+    <div class="sitems">
+      <div class="si rev d1"><div class="sin">01</div><div class="sii"><svg width="15" height="15" fill="none" viewBox="0 0 15 15"><circle cx="7.5" cy="7.5" r="5" stroke="#458895" stroke-width="1.2"/><line x1="7.5" y1="2.5" x2="7.5" y2="12.5" stroke="#458895" stroke-width="1.2"/><line x1="2.5" y1="7.5" x2="12.5" y2="7.5" stroke="#458895" stroke-width="1.2"/></svg></div><h3>Maximise Natural Light</h3><p>Brighter interiors without compromising privacy.</p></div>
+      <div class="si rev d2"><div class="sin">02</div><div class="sii"><svg width="15" height="15" fill="none" viewBox="0 0 15 15"><rect x="1.5" y="1.5" width="5" height="12" rx=".5" stroke="#458895" stroke-width="1.2"/><rect x="8.5" y="1.5" width="5" height="12" rx=".5" stroke="#458895" stroke-width="1.2"/></svg></div><h3>Open Yet Functional Spaces</h3><p>Elegant partitions that maintain openness and connectivity.</p></div>
+      <div class="si rev d3"><div class="sin">03</div><div class="sii"><svg width="15" height="15" fill="none" viewBox="0 0 15 15"><path d="M2.5 12.5L7.5 3.5l5 9H2.5Z" stroke="#458895" stroke-width="1.2" fill="none"/><circle cx="7.5" cy="9.5" r="1.5" stroke="#458895" stroke-width="1.2"/></svg></div><h3>Safe and Elegant Railings</h3><p>Minimalist systems that protect while preserving sightlines.</p></div>
+      <div class="si rev d4"><div class="sin">04</div><div class="sii"><svg width="15" height="15" fill="none" viewBox="0 0 15 15"><rect x="2.5" y="1.5" width="10" height="12" rx=".5" stroke="#458895" stroke-width="1.2"/><line x1="4.5" y1="1.5" x2="4.5" y2="13.5" stroke="#458895" stroke-width="1.2"/><line x1="2.5" y1="9.5" x2="12.5" y2="9.5" stroke="#458895" stroke-width="1.2"/></svg></div><h3>Premium Shower Experiences</h3><p>Custom frameless enclosures built for modern bathrooms.</p></div>
+      <div class="si rev d4"><div class="sin">05</div><div class="sii"><svg width="15" height="15" fill="none" viewBox="0 0 15 15"><rect x="3.5" y="1.5" width="8" height="12" rx=".5" stroke="#458895" stroke-width="1.2"/><path d="M3.5 3.5C1.5 5.5 1.5 9.5 3.5 11.5" stroke="#458895" stroke-width="1" stroke-dasharray="1.5 1.5"/></svg></div><h3>Custom Mirrors That Transform</h3><p>Decorative and functional mirrors tailored to every interior.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- OUR SOLUTIONS -->
+<section id="solutions">
+  <div class="wrap">
+    <div class="rev">
+      <span class="teal-bar"></span>
+      <span class="eyebrow-g">Our Solutions</span>
+      <h2 style="font-family:var(--fm);font-size:clamp(24px,3vw,38px);font-weight:300;color:var(--black);margin-top:16px;line-height:1.2;">Complete Glass Solutions. Designed, Fabricated and Installed In-House.</h2>
+    </div>
+    <div class="sg">
+      <a href="windows-doors.html" class="sc2 rev d1">
+        <div class="sc2-icon">
+          <svg width="32" height="32" fill="none" viewBox="0 0 32 32"><rect x="3" y="3" width="26" height="26" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="3" y="3" width="12" height="26" rx="1.5" stroke="currentColor" stroke-width="1.5"/><circle cx="21" cy="16" r="1.8" fill="currentColor"/></svg>
+        </div>
+        <h3>Windows</h3>
+        <p>Premium European aluminium window systems for modern homes and commercial spaces.</p>
+        <span class="sc2-link">Explore <svg width="10" height="10" fill="none" viewBox="0 0 10 10"><path d="M1 5h8M5 1l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span>
+      </a>
+      <a href="railings.html" class="sc2 rev d2">
+        <div class="sc2-icon">
+          <svg width="32" height="32" fill="none" viewBox="0 0 32 32"><line x1="3" y1="13" x2="29" y2="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="7" y1="13" x2="7" y2="29" stroke="currentColor" stroke-width="1.5"/><line x1="16" y1="13" x2="16" y2="29" stroke="currentColor" stroke-width="1.5"/><line x1="25" y1="13" x2="25" y2="29" stroke="currentColor" stroke-width="1.5"/><rect x="3" y="8" width="26" height="5" rx="1" stroke="currentColor" stroke-width="1.5"/></svg>
+        </div>
+        <h3>Railings</h3>
+        <p>Minimalist glass railing systems with uncompromised safety.</p>
+        <span class="sc2-link">Explore <svg width="10" height="10" fill="none" viewBox="0 0 10 10"><path d="M1 5h8M5 1l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span>
+      </a>
+      <a href="partitions.html" class="sc2 rev d3">
+        <div class="sc2-icon">
+          <svg width="32" height="32" fill="none" viewBox="0 0 32 32"><rect x="3" y="3" width="26" height="26" rx="1.5" stroke="currentColor" stroke-width="1.5"/><line x1="16" y1="3" x2="16" y2="29" stroke="currentColor" stroke-width="1.5"/><circle cx="16" cy="16" r="1.8" fill="currentColor"/></svg>
+        </div>
+        <h3>Partitions and Doors</h3>
+        <p>Flexible office and residential partition systems.</p>
+        <span class="sc2-link">Explore <svg width="10" height="10" fill="none" viewBox="0 0 10 10"><path d="M1 5h8M5 1l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span>
+      </a>
+      <a href="shower-cubicles.html" class="sc2 rev d4">
+        <div class="sc2-icon">
+          <svg width="32" height="32" fill="none" viewBox="0 0 32 32"><path d="M8 29L8 11Q8 6 12 6L20 6Q24 6 24 11L24 29" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><line x1="5" y1="29" x2="27" y2="29" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M12 6V4M20 6V4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Shower Cubicles</h3>
+        <p>Custom frameless shower enclosures.</p>
+        <span class="sc2-link">Explore <svg width="10" height="10" fill="none" viewBox="0 0 10 10"><path d="M1 5h8M5 1l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span>
+      </a>
+      <a href="mirrors.html" class="sc2 rev d4">
+        <div class="sc2-icon">
+          <svg width="32" height="32" fill="none" viewBox="0 0 32 32"><rect x="5" y="3" width="22" height="26" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M5 10C2 13 2 19 5 22" stroke="currentColor" stroke-width="1.2" stroke-dasharray="2.5 2.5"/><path d="M27 10C30 13 30 19 27 22" stroke="currentColor" stroke-width="1.2" stroke-dasharray="2.5 2.5"/><circle cx="16" cy="16" r="3" stroke="currentColor" stroke-width="1.2"/></svg>
+        </div>
+        <h3>Mirrors</h3>
+        <p>Decorative and functional mirrors tailored to every interior.</p>
+        <span class="sc2-link">Explore <svg width="10" height="10" fill="none" viewBox="0 0 10 10"><path d="M1 5h8M5 1l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY DG -->
+<section id="why">
+  <div class="wrap">
+    <div class="wi">
+      <div class="wl">
+        <span class="rev" style="display:block;width:36px;height:2px;background:var(--teal);margin-bottom:18px;"></span>
+        <span class="eyebrow-w rev">Why Domestic Glass</span>
+        <h2 class="rev d1">35+ Years of Precision. Trusted Across Every Project.</h2>
+        <p class="rev d2">Since 1991, Domestic Glass has partnered with architects, designers, developers, and homeowners to deliver premium custom glass solutions through in-house manufacturing, expert installation, and dedicated project management.</p>
+        <a href="about.html" class="btn btn-ol-w rev d3">Our Story</a>
+        <div class="pills" style="margin-top:44px;">
+          <div class="pill rev d1"><div class="pdot"></div><span>35+ Years of Expertise</span></div>
+          <div class="pill rev d2"><div class="pdot"></div><span>Custom Fabrication</span></div>
+          <div class="pill rev d3"><div class="pdot"></div><span>Complete Turnkey Execution</span></div>
+          <div class="pill rev d4"><div class="pdot"></div><span>Dedicated Project Coordination</span></div>
+          <div class="pill rev d4"><div class="pdot"></div><span>Premium Hardware and Glass Partners</span></div>
+        </div>
+      </div>
+      <div class="wr">
+        <div class="wp rev d1"><div class="wpn">35<span>+</span></div><div class="wpl">Years in Business</div></div>
+        <div class="wp rev d2"><div class="wpn">500<span>+</span></div><div class="wpl">Projects Delivered</div></div>
+        <div class="wp rev d3"><div class="wpn">5</div><div class="wpl">Solution Categories</div></div>
+        <div class="wp rev d4" style="background:rgba(69,136,149,.1);border-color:rgba(69,136,149,.2);padding:28px 32px;">
+          <p class="wqt">"The quality of their work and project management sets them apart from everyone else."</p>
+          <div class="wpl" style="margin-top:14px;">Architect Partner, Hyderabad</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="wrap">
+    <div class="rh rev">
+      <span class="teal-bar" style="margin:0 auto 14px;"></span>
+      <span class="eyebrow-g">Client Testimonials</span>
+      <h2>Trusted by Architects, Designers and Homeowners Across India</h2>
+    </div>
+    <div class="rg">
+      <div class="rc rev d1">
+        <div class="rq">&ldquo;</div>
+        <p class="rt">We at S S Consultancy have been working with Domestic Glass for 5 years and all our projects receive compliments. They are truly making a feather in a crown.</p>
+        <div class="ra"><div class="rav">S</div><div><div class="rn">Shankar Singh</div><div class="ro">S S Consultancy, Raichur</div></div></div>
+      </div>
+      <div class="rc rev d2">
+        <div class="rq">&ldquo;</div>
+        <p class="rt">Prompt, done as required and professional. The dealing with them was easy and as transparent as their glasses. Thanks for being responsive and responsible.</p>
+        <div class="ra"><div class="rav">S</div><div><div class="rn">Sonal Andrews</div><div class="ro">Client</div></div></div>
+      </div>
+      <div class="rc rev d3">
+        <div class="rq">&ldquo;</div>
+        <p class="rt">Always frank and clear on expectations. Keeps it easy to plan our projects ahead. Thank you for being our Official Glass Partner.</p>
+        <div class="ra"><div class="rav">A</div><div><div class="rn">Alizaheer Ali</div><div class="ro">Official Glass Partner</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- INSTAGRAM FEED -->
+<section id="insta" style="background:var(--g50);padding:88px 0;border-top:1px solid var(--g200);">
+  <div class="wrap">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:44px;flex-wrap:wrap;">
+      <div class="rev">
+        <span class="teal-bar"></span>
+        <span class="eyebrow-g">Follow Our Work</span>
+        <h2 style="font-family:var(--fm);font-size:clamp(24px,3vw,38px);font-weight:300;color:var(--black);margin-top:14px;line-height:1.2;">@domesticglass on Instagram</h2>
+      </div>
+      <a href="https://www.instagram.com/domesticglass/" target="_blank" rel="noopener" class="btn btn-ol rev d2" style="display:inline-flex;align-items:center;gap:9px;flex-shrink:0;">
+        <svg width="16" height="16" fill="none" viewBox="0 0 16 16"><rect x="1" y="1" width="14" height="14" rx="4" stroke="currentColor" stroke-width="1.3"/><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.3"/><circle cx="12" cy="4" r="1" fill="currentColor"/></svg>
+        Follow on Instagram
+      </a>
+    </div>
+    <!-- Elfsight Instagram Feed Widget - sign up free at elfsight.com -->
+    <!-- Replace this div with your Elfsight embed code -->
+    <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:3px;">
+      <a href="https://www.instagram.com/domesticglass/" target="_blank" style="aspect-ratio:1;background:var(--g200);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/002.jpg" alt="Instagram" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"/></a>
+      <a href="https://www.instagram.com/domesticglass/" target="_blank" style="aspect-ratio:1;background:var(--g200);display:flex;align-items:center;justify-content:center;overflow:hidden;"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Mirror_0060.jpg" alt="Instagram" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"/></a>
+      <a href="https://www.instagram.com/domesticglass/" target="_blank" style="aspect-ratio:1;background:var(--g200);display:flex;align-items:center;justify-content:center;overflow:hidden;"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Mirrors/Backlit%20Mirrors/Halo-Backlit-Mirror.jpg" alt="Instagram" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"/></a>
+      <a href="https://www.instagram.com/domesticglass/" target="_blank" style="aspect-ratio:1;background:var(--g200);display:flex;align-items:center;justify-content:center;overflow:hidden;"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Partitions%20%26%20Doors/Doors/Slim-Frame-Glass-Door-Black-01.jpg" alt="Instagram" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"/></a>
+      <a href="https://www.instagram.com/domesticglass/" target="_blank" style="aspect-ratio:1;background:var(--g200);display:flex;align-items:center;justify-content:center;overflow:hidden;"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Shower%20Cubicles/Framed%20Shower%20Cubicles/90-Degree-Black-Framed-Shower-Cubicle-02.jpg" alt="Instagram" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"/></a>
+      <a href="https://www.instagram.com/domesticglass/" target="_blank" style="aspect-ratio:1;background:var(--g200);display:flex;align-items:center;justify-content:center;overflow:hidden;"><img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Railings/Staircase/Staircase-Glass-Railing-Wood-Handrail-01.jpg" alt="Instagram" style="width:100%;height:100%;object-fit:cover;transition:transform .4s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"/></a>
+    </div>
+    <p style="font-size:11px;color:var(--g400);text-align:center;margin-top:16px;letter-spacing:.06em;text-transform:uppercase;">
+      <a href="https://www.instagram.com/domesticglass/" target="_blank" rel="noopener" style="color:var(--teal);">View all posts on Instagram</a>
+    </p>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section id="ctab">
+  <div class="wrap">
+    <div class="ctai">
+      <div class="rev"><h2>Ready to Bring Your Vision to Life?</h2><p>Whether you're designing a residence, workspace, or retail environment, our specialists are ready to help you choose the right glass solution.</p></div>
+      <div class="ctaa rev d2">
+        <a href="contact.html" class="btn btn-w">Book a Consultation</a>
+        <a href="tel:+919553371114" class="btn btn-ol-w">Call Now</a>
+        <a href="https://wa.me/919999999999" class="btn btn-ol-w">WhatsApp Us</a>
+        <a href="#" class="btn btn-ol-w">Download Catalogue</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="ft">
+  <div class="wrap">
+    <div class="ft">
+      <div>
+        <img class="fli" src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Domestic_glass_Logo__1_.png" alt="Domestic Glass" onerror="this.style.display='none'"/>
+        <p class="ftag">Designing, fabricating, and installing custom glass solutions across India since 1991.</p>
+        <div class="fso">
+          <a href="#" class="fsl">in</a>
+          <a href="#" class="fsl">ig</a>
+          <a href="#" class="fsl">wa</a>
+        </div>
+      </div>
+      <div class="fc"><h4>Solutions</h4><ul><li><a href="windows-doors.html">Windows</a></li><li><a href="railings.html">Railings</a></li><li><a href="partitions.html">Partitions and Doors</a></li><li><a href="shower-cubicles.html">Shower Cubicles</a></li><li><a href="mirrors.html">Mirrors</a></li></ul></div>
+      <div class="fc"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="architects.html">Architects</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="fc"><h4>Contact</h4><div class="fci"><a href="tel:+919553371114" class="fca">+91 95533 71114</a><a href="mailto:info@domesticglass.in" class="fca">info@domesticglass.in</a><span class="fca" style="cursor:default;">Hyderabad, Telangana</span></div></div>
+    </div>
+    <div class="fb"><p class="fbcp">2025 Domestic Glass. All rights reserved.</p><div class="fbl"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a></div></div>
+  </div>
+</footer>
+
+<script>
+// Header
+const hdr=document.getElementById('hdr');
+window.addEventListener('scroll',()=>hdr.classList.toggle('sc',window.scrollY>20));
+// Hamburger
+const hbg=document.getElementById('hbg'),mob=document.getElementById('mob');
+hbg.addEventListener('click',()=>{hbg.classList.toggle('op');mob.classList.toggle('op');});
+// Reveal
+const ro=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target);}});},{threshold:.1,rootMargin:'0px 0px -24px 0px'});
+document.querySelectorAll('.rev').forEach(el=>ro.observe(el));
+document.querySelectorAll('#hero .rev').forEach(el=>el.classList.add('on'));
+// Slideshow
+let ci=0;
+const sls=document.querySelectorAll('.slide'),dts=document.querySelectorAll('.sdot');
+function gs(n){sls[ci].classList.remove('on');dts[ci].classList.remove('on');ci=(n+sls.length)%sls.length;sls[ci].classList.add('on');dts[ci].classList.add('on');}
+setInterval(()=>gs(ci+1),4800);
+// Project filter
+function filt(btn,cat){
+  document.querySelectorAll('.pt').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  document.querySelectorAll('#hpg .pc').forEach(p=>{p.style.display=(cat==='all'||p.dataset.c===cat)?'block':'none';});
+}
+</script>
+<!-- CATALOGUE MODAL -->
+<div id="catModal" style="position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9000;display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px);">
+  <div style="background:#fff;width:100%;max-width:440px;position:relative;">
+    <div style="height:3px;background:#458895;"></div>
+    <div style="padding:36px 32px 32px;">
+      <button onclick="closeCatModal()" style="position:absolute;top:12px;right:16px;background:none;border:none;cursor:pointer;color:#9A9A9A;font-size:24px;line-height:1;">&#215;</button>
+      <div id="catForm">
+        <h3 style="font-family:'Montserrat',sans-serif;font-size:20px;font-weight:400;color:#0A0A0A;margin-bottom:6px;">Download Catalogue</h3>
+        <p style="font-size:13px;color:#5A5A5A;margin-bottom:24px;">Enter your details to download the PDF.</p>
+        <div style="margin-bottom:16px;">
+          <label style="display:block;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#5A5A5A;margin-bottom:6px;">Name *</label>
+          <input type="text" id="catName" placeholder="Your full name" style="width:100%;border:1px solid #E4E4E4;padding:11px 14px;font-size:14px;color:#0A0A0A;outline:none;font-family:'DM Sans',sans-serif;" onfocus="this.style.borderColor='#458895'" onblur="this.style.borderColor='#E4E4E4'"/>
+          <div id="catNameErr" style="font-size:11px;color:#e53e3e;margin-top:4px;display:none;">Please enter your name.</div>
+        </div>
+        <div style="margin-bottom:20px;">
+          <label style="display:block;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#5A5A5A;margin-bottom:6px;">Mobile *</label>
+          <input type="tel" id="catPhone" placeholder="+91 XXXXX XXXXX" style="width:100%;border:1px solid #E4E4E4;padding:11px 14px;font-size:14px;color:#0A0A0A;outline:none;font-family:'DM Sans',sans-serif;" onfocus="this.style.borderColor='#458895'" onblur="this.style.borderColor='#E4E4E4'"/>
+          <div id="catPhoneErr" style="font-size:11px;color:#e53e3e;margin-top:4px;display:none;">Please enter a valid 10-digit number.</div>
+        </div>
+        <button onclick="submitCatForm()" style="width:100%;background:#458895;color:#fff;border:none;padding:14px;font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;font-family:'DM Sans',sans-serif;">Download Now</button>
+        <p style="font-size:11px;color:#9A9A9A;text-align:center;margin-top:12px;">We respect your privacy. No spam, ever.</p>
+      </div>
+      <div id="catSuccess" style="display:none;text-align:center;padding:16px 0 8px;">
+        <div style="width:56px;height:56px;background:rgba(69,136,149,.1);border:2px solid #458895;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
+          <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" stroke="#458895" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h4 style="font-family:'Montserrat',sans-serif;font-size:18px;font-weight:400;color:#0A0A0A;margin-bottom:8px;">Downloading...</h4>
+        <p style="font-size:13px;color:#5A5A5A;line-height:1.6;">Your download has started. <a id="catManualLink" href="#" style="color:#458895;">Click here</a> if it doesn't begin automatically.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+var CAT_PDF_URL="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Catalogue/DG%20Completed%20works.pdf";
+
+function openCatModal(){document.getElementById('catModal').style.display='flex';document.body.style.overflow='hidden';}
+function closeCatModal(){document.getElementById('catModal').style.display='none';document.body.style.overflow='';setTimeout(function(){document.getElementById('catForm').style.display='block';document.getElementById('catSuccess').style.display='none';document.getElementById('catName').value='';document.getElementById('catPhone').value='';},300);}
+document.getElementById('catModal').addEventListener('click',function(e){if(e.target===e.currentTarget)closeCatModal();});
+function submitCatForm(){
+  var name=document.getElementById('catName').value.trim();
+  var phone=document.getElementById('catPhone').value.trim().replace(/\D/g,'');
+  var ok=true;
+  if(!name){document.getElementById('catName').style.borderColor='#e53e3e';document.getElementById('catNameErr').style.display='block';ok=false;}else{document.getElementById('catName').style.borderColor='#E4E4E4';document.getElementById('catNameErr').style.display='none';}
+  if(phone.length<10){document.getElementById('catPhone').style.borderColor='#e53e3e';document.getElementById('catPhoneErr').style.display='block';ok=false;}else{document.getElementById('catPhone').style.borderColor='#E4E4E4';document.getElementById('catPhoneErr').style.display='none';}
+  if(!ok)return;
+  console.log('Catalogue lead:',{name:name,phone:document.getElementById('catPhone').value.trim(),pdf:CAT_PDF_URL});
+  document.getElementById('catForm').style.display='none';
+  document.getElementById('catSuccess').style.display='block';
+  document.getElementById('catManualLink').href=CAT_PDF_URL;
+  var a=document.createElement('a');a.href=CAT_PDF_URL;a.download='';a.target='_blank';document.body.appendChild(a);a.click();document.body.removeChild(a);
+}
+
+</script>
+</body>
+</html>

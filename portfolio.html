@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Portfolio – Domestic Glass</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--black:#0A0A0A;--white:#FFFFFF;--g50:#F8F8F8;--g100:#F2F2F2;--g200:#E4E4E4;--g400:#9A9A9A;--g600:#5A5A5A;--g800:#2A2A2A;--teal:#458895;--teal-d:#336670;--fm:'Montserrat',system-ui,sans-serif;--fb:'DM Sans',system-ui,sans-serif;}
+html{scroll-behavior:smooth;}body{font-family:var(--fb);font-size:16px;line-height:1.6;color:var(--black);background:var(--white);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+img{max-width:100%;display:block;}a{text-decoration:none;color:inherit;}
+.rev{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease;}.rev.on{opacity:1;transform:none;}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
+.wrap{max-width:1200px;margin:0 auto;padding:0 48px;}
+.teal-bar{display:block;width:36px;height:2px;background:var(--teal);margin-bottom:18px;}
+.eyebrow-w{font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.45);}
+.eyebrow-g{font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--g400);}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--fb);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:14px 28px;transition:all .22s;cursor:pointer;border:none;}
+.btn-blk{background:var(--black);color:var(--white);}.btn-blk:hover{background:var(--teal);}
+.btn-ol{background:transparent;color:var(--black);border:1px solid var(--g200);}.btn-ol:hover{border-color:var(--teal);color:var(--teal);}
+
+/* HEADER */
+#hdr{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--g200);transition:box-shadow .3s;}
+#hdr.sc{box-shadow:0 4px 24px rgba(0,0,0,.07);}
+.nav{max-width:1200px;margin:0 auto;padding:0 48px;height:68px;display:flex;align-items:center;justify-content:space-between;gap:20px;}
+.logo img{height:40px;width:auto;display:block;}
+.logo-fb{font-family:var(--fm);font-size:16px;font-weight:600;color:var(--black);display:none;}.logo-fb span{color:var(--teal);}
+.nl{display:flex;align-items:center;list-style:none;}
+.nl>li>a{font-size:12.5px;font-weight:500;letter-spacing:.04em;color:var(--g600);padding:8px 14px;display:flex;align-items:center;gap:4px;transition:color .2s;}
+.nl>li>a:hover,.nl>li.act>a{color:var(--black);}
+.drop{position:relative;}.drop>a svg{transition:transform .2s;}.drop:hover>a svg{transform:rotate(180deg);}
+.dd{position:absolute;top:calc(100% + 8px);left:0;background:var(--white);border:1px solid var(--g200);min-width:210px;padding:8px 0;box-shadow:0 16px 40px rgba(0,0,0,.10);opacity:0;visibility:hidden;transform:translateY(-6px);transition:all .2s;list-style:none;}
+.drop:hover .dd{opacity:1;visibility:visible;transform:none;}
+.dd li a{display:block;padding:10px 18px;font-size:12.5px;color:var(--g600);transition:background .15s,color .15s;}.dd li a:hover{background:var(--g50);color:var(--teal);}
+.nr{display:flex;align-items:center;gap:14px;flex-shrink:0;}
+.hbg{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
+.hbg span{display:block;width:22px;height:1.5px;background:var(--black);transition:transform .25s,opacity .25s;}
+.hbg.op span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}.hbg.op span:nth-child(2){opacity:0;}.hbg.op span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+.mob{display:none;flex-direction:column;background:var(--white);border-top:1px solid var(--g200);padding:16px 24px 24px;}
+.mob.op{display:flex;}.mob a{font-size:15px;color:var(--g800);padding:13px 0;border-bottom:1px solid var(--g100);transition:color .2s;}
+.mob a:last-child{border-bottom:none;}.mob a:hover{color:var(--teal);}
+.mob-cta{margin-top:16px;background:var(--black);color:var(--white)!important;text-align:center;padding:13px!important;border-bottom:none!important;font-weight:600;font-size:11px!important;text-transform:uppercase;}
+
+/* PAGE HERO */
+.ph{padding:148px 0 88px;background:var(--black);position:relative;overflow:hidden;}
+.ph::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.025) 1px,transparent 1px);background-size:28px 28px;}
+.ph::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--teal);}
+.phi{position:relative;z-index:1;}
+.ph h1{font-family:var(--fm);font-size:clamp(36px,5vw,64px);font-weight:300;line-height:1.1;color:var(--white);margin:18px 0 16px;letter-spacing:-.01em;}
+.ph h1 em{font-style:normal;font-weight:600;color:var(--teal);}
+.ph p{font-size:15px;line-height:1.75;color:rgba(255,255,255,.5);max-width:520px;}
+
+/* FILTER TABS */
+.port-filter{padding:48px 0 0;background:var(--white);}
+.port-tabs{display:flex;border-bottom:2px solid var(--g200);overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.pt{font-family:var(--fm);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--g400);padding:13px 22px;cursor:pointer;background:none;border:none;border-bottom:2px solid transparent;margin-bottom:-2px;white-space:nowrap;transition:color .2s,border-color .2s;}
+.pt.on,.pt:hover{color:var(--black);border-bottom-color:var(--teal);}
+
+/* PORTFOLIO GRID */
+.port-grid-wrap{padding:48px 0 96px;background:var(--white);}
+.port-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--g200);}
+
+/* PROJECT CARD */
+.pcard{background:var(--white);position:relative;overflow:hidden;cursor:pointer;display:flex;flex-direction:column;}
+.pcard-img{aspect-ratio:4/3;position:relative;overflow:hidden;background:var(--g100);}
+.pcard-img-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .55s ease;}
+.pcard:hover .pcard-img-bg{transform:scale(1.05);}
+.pcard-img-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.6) 0%,transparent 60%);z-index:1;}
+.pcard-sector{position:absolute;top:16px;left:16px;z-index:2;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;background:var(--teal);color:var(--white);padding:4px 10px;}
+.pcard-img-title{position:absolute;bottom:16px;left:16px;right:16px;z-index:2;font-family:var(--fm);font-size:17px;font-weight:400;color:var(--white);line-height:1.25;}
+.pcard-teal{position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--teal);z-index:3;transform:scaleX(0);transform-origin:left;transition:transform .3s;}
+.pcard:hover .pcard-teal{transform:scaleX(1);}
+
+/* Card body */
+.pcard-body{padding:24px 24px 20px;flex:1;display:flex;flex-direction:column;gap:12px;border:1px solid var(--g200);border-top:none;}
+.pcard-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.pcard-tag{font-size:10px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--g400);background:var(--g50);border:1px solid var(--g200);padding:3px 8px;}
+.pcard-location{font-size:11px;color:var(--g400);display:flex;align-items:center;gap:4px;}
+.pcard-arch{font-size:12px;color:var(--g600);}
+.pcard-arch span{color:var(--teal);font-weight:500;}
+.pcard-overview{font-size:13px;line-height:1.65;color:var(--g600);}
+.pcard-actions{display:flex;gap:10px;margin-top:auto;padding-top:12px;border-top:1px solid var(--g100);}
+.pcard-btn{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:8px 14px;transition:all .22s;cursor:pointer;}
+.pcard-btn-gallery{background:var(--black);color:var(--white);}.pcard-btn-gallery:hover{background:var(--teal);}
+.pcard-btn-reel{background:transparent;color:var(--black);border:1px solid var(--g200);}.pcard-btn-reel:hover{border-color:var(--teal);color:var(--teal);}
+
+/* No results */
+.port-empty{padding:64px;text-align:center;color:var(--g400);font-size:14px;display:none;}
+.port-empty.on{display:block;}
+
+/* CTA */
+.port-cta{background:var(--teal);padding:80px 0;}
+.port-cta-i{display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;}
+.port-cta h2{font-family:var(--fm);font-size:clamp(22px,3.5vw,40px);font-weight:300;color:var(--white);margin-bottom:8px;line-height:1.2;}
+.port-cta p{font-size:15px;color:rgba(255,255,255,.62);}
+.btn-ws{display:inline-flex;align-items:center;gap:8px;background:var(--white);color:var(--teal);font-family:var(--fb);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:14px 28px;transition:all .22s;}
+.btn-ws:hover{background:var(--black);color:var(--white);}
+
+/* FOOTER */
+#ft{background:var(--black);padding:72px 0 0;}
+.ftg{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:52px;padding-bottom:52px;border-bottom:1px solid rgba(255,255,255,.07);}
+.fli{height:38px;width:auto;display:block;margin-bottom:18px;opacity:.85;}
+.ftag{font-size:13px;line-height:1.65;color:rgba(255,255,255,.38);max-width:240px;margin-bottom:24px;}
+.fc h4{font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.22);margin-bottom:18px;}
+.fc ul{list-style:none;}.fc ul li{margin-bottom:9px;}.fc ul li a{font-size:13px;color:rgba(255,255,255,.42);transition:color .2s;}.fc ul li a:hover{color:var(--teal);}
+.fci{display:flex;flex-direction:column;gap:9px;}.fca{font-size:13px;color:rgba(255,255,255,.42);transition:color .2s;}.fca:hover{color:var(--teal);}
+.fbb{padding:22px 0;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;}
+.fbcp{font-size:11px;color:rgba(255,255,255,.18);}
+.fbl{display:flex;gap:18px;}.fbl a{font-size:11px;color:rgba(255,255,255,.18);transition:color .2s;}.fbl a:hover{color:var(--teal);}
+
+/* RESPONSIVE */
+@media(max-width:1024px){.port-grid{grid-template-columns:repeat(2,1fr);}.ftg{grid-template-columns:1fr 1fr;}}
+@media(max-width:900px){.nl,.nr .btn-blk{display:none;}.hbg{display:flex;}.wrap,.nav{padding-left:24px;padding-right:24px;}.port-cta-i{flex-direction:column;align-items:flex-start;}}
+@media(max-width:640px){.wrap,.nav{padding-left:18px;padding-right:18px;}.port-grid{grid-template-columns:1fr;}.ftg{grid-template-columns:1fr;}.fbb{flex-direction:column;align-items:flex-start;}.pcard-actions{flex-direction:column;}}
+.wa-fab{position:fixed;bottom:28px;right:28px;z-index:8000;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);transition:transform .22s,box-shadow .22s;text-decoration:none;}
+.wa-fab:hover{transform:scale(1.1);box-shadow:0 6px 28px rgba(37,211,102,.55);}
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <div class="nav">
+    <a href="index.html" class="logo">
+      <img src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Domestic_glass_Logo__1_.png" alt="Domestic Glass" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+      <span class="logo-fb">Domestic <span>Glass</span></span>
+    </a>
+    <ul class="nl">
+      <li><a href="index.html">Home</a></li>
+      <li class="drop">
+        <a href="#">Solutions <svg width="10" height="10" fill="none" viewBox="0 0 10 10"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
+        <ul class="dd">
+          <li><a href="windows-doors.html">Windows</a></li>
+          <li><a href="railings.html">Railings</a></li>
+          <li><a href="partitions.html">Partitions and Doors</a></li>
+          <li><a href="shower-cubicles.html">Shower Cubicles</a></li>
+          <li><a href="mirrors.html">Mirrors</a></li>
+        </ul>
+      </li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="architects.html">Architects</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nr">
+      <a href="contact.html" class="btn btn-blk" style="padding:9px 18px;font-size:11px;">Book a Visit</a>
+    </div>
+    <button class="hbg" id="hbg"><span></span><span></span><span></span></button>
+  </div>
+  <nav class="mob" id="mob">
+    <a href="index.html">Home</a>
+    <a href="windows-doors.html">Windows</a>
+    <a href="railings.html">Railings</a>
+    <a href="partitions.html">Partitions and Doors</a>
+    <a href="shower-cubicles.html">Shower Cubicles</a>
+    <a href="mirrors.html">Mirrors</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="about.html">About Us</a>
+    <a href="architects.html">Architects</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="mob-cta">Book a Site Visit</a>
+  </nav>
+</header>
+
+<section class="ph">
+  <div class="wrap phi">
+    <span class="eyebrow-w rev">Our Work</span>
+    <h1 class="rev d1">Project <em>Portfolio</em></h1>
+    <p class="rev d2">Completed projects across Hyderabad, executed in partnership with leading architects and interior designers.</p>
+  </div>
+</section>
+
+<section class="port-filter">
+  <div class="wrap">
+    <div class="port-tabs">
+      <button class="pt on" onclick="pfilt(this,'all')">All Projects</button>
+      <button class="pt" onclick="pfilt(this,'residential')">Residential</button>
+      <button class="pt" onclick="pfilt(this,'commercial')">Commercial</button>
+      <button class="pt" onclick="pfilt(this,'hospitality')">Hospitality</button>
+    </div>
+  </div>
+</section>
+
+<section class="port-grid-wrap">
+  <div class="wrap">
+    <div class="port-grid" id="pg">
+
+      <!-- 1. Bharat Office -->
+      <div class="pcard rev d1" data-sector="commercial">
+        <div class="pcard-img">
+          <div class="pcard-img-bg" style="background-image:url('https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/002.jpg')"></div>
+          <div class="pcard-img-ov"></div>
+          <span class="pcard-sector">Commercial</span>
+          <div class="pcard-img-title">The Contemporary Office</div>
+          <div class="pcard-teal"></div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-meta">
+            <span class="pcard-tag">Partitions</span>
+            <span class="pcard-tag">Doors</span>
+            <span class="pcard-location"><svg width="11" height="11" fill="none" viewBox="0 0 11 11"><circle cx="5.5" cy="4.5" r="1.8" stroke="currentColor" stroke-width="1"/><path d="M5.5 1C3.3 1 1.5 2.8 1.5 5c0 3.2 4 6 4 6s4-2.8 4-6C9.5 2.8 7.7 1 5.5 1z" stroke="currentColor" stroke-width="1"/></svg>Financial District</span>
+          </div>
+          <div class="pcard-arch">Architect: <span>Naveen</span> — NCDA</div>
+          <p class="pcard-overview">Slim-frame glass partitions and doors executed for a contemporary open workspace, balancing transparency with privacy and precision architectural detailing.</p>
+          <div class="pcard-actions">
+            <a href="https://drive.google.com/drive/folders/1AxuFZYlJ0pMyFZdlVKSfUj6fqfxNxShv" target="_blank" class="pcard-btn pcard-btn-gallery">
+              <svg width="13" height="13" fill="none" viewBox="0 0 13 13"><rect x="1" y="1" width="11" height="11" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M1 5h11M5 5v7" stroke="currentColor" stroke-width="1.2"/></svg>
+              View Photos
+            </a>
+            <a href="https://www.instagram.com/reel/DPvvS4IkzBq/" target="_blank" class="pcard-btn pcard-btn-reel">
+              <svg width="13" height="13" fill="none" viewBox="0 0 13 13"><rect x="1" y="1" width="11" height="11" rx="3" stroke="currentColor" stroke-width="1.2"/><circle cx="6.5" cy="6.5" r="2.2" stroke="currentColor" stroke-width="1.2"/><circle cx="9.5" cy="3.5" r=".7" fill="currentColor"/></svg>
+              View Reel
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Ajay Agarwal -->
+      <div class="pcard rev d2" data-sector="residential">
+        <div class="pcard-img">
+          <div class="pcard-img-bg" style="background-image:url('https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/praveen.jpg')"></div>
+          <div class="pcard-img-ov"></div>
+          <span class="pcard-sector">Residential</span>
+          <div class="pcard-img-title">The Luxe Residence</div>
+          <div class="pcard-teal"></div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-meta">
+            <span class="pcard-tag">Mirrors</span>
+            <span class="pcard-tag">Shower Cubicles</span>
+            <span class="pcard-location"><svg width="11" height="11" fill="none" viewBox="0 0 11 11"><circle cx="5.5" cy="4.5" r="1.8" stroke="currentColor" stroke-width="1"/><path d="M5.5 1C3.3 1 1.5 2.8 1.5 5c0 3.2 4 6 4 6s4-2.8 4-6C9.5 2.8 7.7 1 5.5 1z" stroke="currentColor" stroke-width="1"/></svg>Banjara Hills</span>
+          </div>
+          <div class="pcard-arch">Architect: <span>Praveen Jangid</span> — Praveen Architects</div>
+          <p class="pcard-overview">Bespoke framed shower cubicles and customised mirrors tailored to each bathroom, complementing the home's premium interiors with precision and craftsmanship.</p>
+          <div class="pcard-actions">
+            <a href="https://drive.google.com/drive/folders/1dlKeISoqM6V-eUzVMNN6I5cXX81lVLIw" target="_blank" class="pcard-btn pcard-btn-gallery">
+              <svg width="13" height="13" fill="none" viewBox="0 0 13 13"><rect x="1" y="1" width="11" height="11" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M1 5h11M5 5v7" stroke="currentColor" stroke-width="1.2"/></svg>
+              View Photos
+            </a>
+            <a href="https://www.instagram.com/p/DRwjRvPE0Co/" target="_blank" class="pcard-btn pcard-btn-reel">
+              <svg width="13" height="13" fill="none" viewBox="0 0 13 13"><rect x="1" y="1" width="11" height="11" rx="3" stroke="currentColor" stroke-width="1.2"/><circle cx="6.5" cy="6.5" r="2.2" stroke="currentColor" stroke-width="1.2"/><circle cx="9.5" cy="3.5" r=".7" fill="currentColor"/></svg>
+              View Reel
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Avinash - Studio Origin -->
+      <div class="pcard rev d3" data-sector="residential">
+        <div class="pcard-img">
+          <div class="pcard-img-bg" style="background-image:url('https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/kompally.JPG')"></div>
+          <div class="pcard-img-ov"></div>
+          <span class="pcard-sector">Residential</span>
+          <div class="pcard-img-title">The Modern Villa</div>
+          <div class="pcard-teal"></div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-meta">
+            <span class="pcard-tag">Partitions</span>
+            <span class="pcard-tag">Doors</span>
+            <span class="pcard-location"><svg width="11" height="11" fill="none" viewBox="0 0 11 11"><circle cx="5.5" cy="4.5" r="1.8" stroke="currentColor" stroke-width="1"/><path d="M5.5 1C3.3 1 1.5 2.8 1.5 5c0 3.2 4 6 4 6s4-2.8 4-6C9.5 2.8 7.7 1 5.5 1z" stroke="currentColor" stroke-width="1"/></svg>Kompally</span>
+          </div>
+          <div class="pcard-arch">Studio: <span>Studio Origin</span> Interior Design</div>
+          <p class="pcard-overview">20-foot-wide sliding partition system with concealed tracks, full-height glass doors and custom matt-finish fluted glass with fabric lamination for a contemporary villa.</p>
+          <div class="pcard-actions">
+            <a href="https://drive.google.com/drive/folders/1x_gujf2k7d2Rc_fEN9z3nqItLimwuSfi" target="_blank" class="pcard-btn pcard-btn-gallery">
+              <svg width="13" height="13" fill="none" viewBox="0 0 13 13"><rect x="1" y="1" width="11" height="11" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M1 5h11M5 5v7" stroke="currentColor" stroke-width="1.2"/></svg>
+              View Photos
+            </a>
+            <a href="https://www.instagram.com/reel/DRexDHvE74l/" target="_blank" class="pcard-btn pcard-btn-reel">
+              <svg width="13" height="13" fill="none" viewBox="0 0 13 13"><rect x="1" y="1" width="11" height="11" rx="3" stroke="currentColor" stroke-width="1.2"/><circle cx="6.5" cy="6.5" r="2.2" stroke="currentColor" stroke-width="1.2"/><circle cx="9.5" cy="3.5" r=".7" fill="currentColor"/></svg>
+              View Reel
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Table 5 -->
+      <div class="pcard rev d1" data-sector="hospitality">
+        <div class="pcard-img">
+          <div class="pcard-img-bg" style="background-image:url('https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/narsingi.JPG')"></div>
+          <div class="pcard-img-ov"></div>
+          <span class="pcard-sector">Hospitality</span>
+          <div class="pcard-img-title">The Bistro Project</div>
+          <div class="pcard-teal"></div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-meta">
+            <span class="pcard-tag">Partitions</span>
+            <span class="pcard-location"><svg width="11" height="11" fill="none" viewBox="0 0 11 11"><circle cx="5.5" cy="4.5" r="1.8" stroke="currentColor" stroke-width="1"/><path d="M5.5 1C3.3 1 1.5 2.8 1.5 5c0 3.2 4 6 4 6s4-2.8 4-6C9.5 2.8 7.7 1 5.5 1z" stroke="currentColor" stroke-width="1"/></svg>Narsingi</span>
+          </div>
+          <div class="pcard-arch">Architect: <span>Ankita</span></div>
+          <p class="pcard-overview">Telescopic partitions, synchro sliding systems and slim-frame glass doors delivering operational flexibility for a contemporary restaurant adapting between intimate and open dining formats.</p>
+          <div class="pcard-actions">
+            <a href="https://drive.google.com/drive/folders/1k77cPIra-73QQ75o5ZyMM-h69pYmeXlV" target="_blank" class="pcard-btn pcard-btn-gallery">
+              <svg width="13" height="13" fill="none" viewBox="0 0 13 13"><rect x="1" y="1" width="11" height="11" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M1 5h11M5 5v7" stroke="currentColor" stroke-width="1.2"/></svg>
+              View Photos
+            </a>
+            <a href="https://www.instagram.com/reel/DYMkuUNIhOU/" target="_blank" class="pcard-btn pcard-btn-reel">
+              <svg width="13" height="13" fill="none" viewBox="0 0 13 13"><rect x="1" y="1" width="11" height="11" rx="3" stroke="currentColor" stroke-width="1.2"/><circle cx="6.5" cy="6.5" r="2.2" stroke="currentColor" stroke-width="1.2"/><circle cx="9.5" cy="3.5" r=".7" fill="currentColor"/></svg>
+              View Reel
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Roche Bobois -->
+      <div class="pcard rev d2" data-sector="commercial">
+        <div class="pcard-img">
+          <div class="pcard-img-bg" style="background-image:url('https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Banjara%20hills.jpg')"></div>
+          <div class="pcard-img-ov"></div>
+          <span class="pcard-sector">Commercial</span>
+          <div class="pcard-img-title">The Glass Front</div>
+          <div class="pcard-teal"></div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-meta">
+            <span class="pcard-tag">Custom Glass</span>
+            <span class="pcard-location"><svg width="11" height="11" fill="none" viewBox="0 0 11 11"><circle cx="5.5" cy="4.5" r="1.8" stroke="currentColor" stroke-width="1"/><path d="M5.5 1C3.3 1 1.5 2.8 1.5 5c0 3.2 4 6 4 6s4-2.8 4-6C9.5 2.8 7.7 1 5.5 1z" stroke="currentColor" stroke-width="1"/></svg>Banjara Hills</span>
+          </div>
+          <div class="pcard-arch">Firm: <span>Sunil Pillai Associates</span></div>
+          <p class="pcard-overview">Custom glass facade using extra-clear low-iron glass and premium Dormakaba hardware for a luxury retail showroom. Exceptional clarity, precision and seamless visual connectivity.</p>
+          <div class="pcard-actions">
+            <a href="https://drive.google.com/drive/folders/1X6HKnlAj90GdfvA-m4bfnISqXnwYHkj7" target="_blank" class="pcard-btn pcard-btn-gallery">
+              <svg width="13" height="13" fill="none" viewBox="0 0 13 13"><rect x="1" y="1" width="11" height="11" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M1 5h11M5 5v7" stroke="currentColor" stroke-width="1.2"/></svg>
+              View Photos
+            </a>
+            <a href="https://www.instagram.com/p/Dbp_a7AFK7C/" target="_blank" class="pcard-btn pcard-btn-reel">
+              <svg width="13" height="13" fill="none" viewBox="0 0 13 13"><rect x="1" y="1" width="11" height="11" rx="3" stroke="currentColor" stroke-width="1.2"/><circle cx="6.5" cy="6.5" r="2.2" stroke="currentColor" stroke-width="1.2"/><circle cx="9.5" cy="3.5" r=".7" fill="currentColor"/></svg>
+              View Post
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. Lovebirds -->
+      <div class="pcard rev d3" data-sector="commercial">
+        <div class="pcard-img">
+          <div class="pcard-img-bg" style="background-image:url('https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/sunil%20pillai.jpg')"></div>
+          <div class="pcard-img-ov"></div>
+          <span class="pcard-sector">Commercial</span>
+          <div class="pcard-img-title">Architectural Glass Facade</div>
+          <div class="pcard-teal"></div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-meta">
+            <span class="pcard-tag">Custom Glass</span>
+            <span class="pcard-location"><svg width="11" height="11" fill="none" viewBox="0 0 11 11"><circle cx="5.5" cy="4.5" r="1.8" stroke="currentColor" stroke-width="1"/><path d="M5.5 1C3.3 1 1.5 2.8 1.5 5c0 3.2 4 6 4 6s4-2.8 4-6C9.5 2.8 7.7 1 5.5 1z" stroke="currentColor" stroke-width="1"/></svg>Banjara Hills</span>
+          </div>
+          <div class="pcard-arch">Custom Architectural Facade</div>
+          <p class="pcard-overview">Custom architectural glass facade using red-tinted glass delivering a distinctive commercial exterior that balances bold aesthetics with precision engineering and durability.</p>
+          <div class="pcard-actions">
+            <a href="https://drive.google.com/drive/folders/1jvydxFQT5jlc41DyDHWLuTTHRKWrNZuX" target="_blank" class="pcard-btn pcard-btn-gallery">
+              <svg width="13" height="13" fill="none" viewBox="0 0 13 13"><rect x="1" y="1" width="11" height="11" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M1 5h11M5 5v7" stroke="currentColor" stroke-width="1.2"/></svg>
+              View Photos
+            </a>
+            <a href="https://www.instagram.com/p/DPqsXNck4P9/" target="_blank" class="pcard-btn pcard-btn-reel">
+              <svg width="13" height="13" fill="none" viewBox="0 0 13 13"><rect x="1" y="1" width="11" height="11" rx="3" stroke="currentColor" stroke-width="1.2"/><circle cx="6.5" cy="6.5" r="2.2" stroke="currentColor" stroke-width="1.2"/><circle cx="9.5" cy="3.5" r=".7" fill="currentColor"/></svg>
+              View Post
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. Keerthana Reddy -->
+      <div class="pcard rev d1" data-sector="residential">
+        <div class="pcard-img">
+          <div class="pcard-img-bg" style="background-image:url('https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/shaikpet.jpg')"></div>
+          <div class="pcard-img-ov"></div>
+          <span class="pcard-sector">Residential</span>
+          <div class="pcard-img-title">The Elegant Villa</div>
+          <div class="pcard-teal"></div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-meta">
+            <span class="pcard-tag">Mirrors</span>
+            <span class="pcard-tag">Partitions</span>
+            <span class="pcard-location"><svg width="11" height="11" fill="none" viewBox="0 0 11 11"><circle cx="5.5" cy="4.5" r="1.8" stroke="currentColor" stroke-width="1"/><path d="M5.5 1C3.3 1 1.5 2.8 1.5 5c0 3.2 4 6 4 6s4-2.8 4-6C9.5 2.8 7.7 1 5.5 1z" stroke="currentColor" stroke-width="1"/></svg>Shaikpet</span>
+          </div>
+          <div class="pcard-arch">Architect: <span>Prashanti</span> — Design Dialogues</div>
+          <p class="pcard-overview">Bespoke mirrors and glass partition systems executed with meticulous attention to proportion and alignment, enhancing light and spatial harmony throughout the residence.</p>
+          <div class="pcard-actions">
+            <a href="https://drive.google.com/drive/folders/1Vfq9eOCt8J1WJplrhkQGQfY5vi9-U7tP" target="_blank" class="pcard-btn pcard-btn-gallery">
+              <svg width="13" height="13" fill="none" viewBox="0 0 13 13"><rect x="1" y="1" width="11" height="11" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M1 5h11M5 5v7" stroke="currentColor" stroke-width="1.2"/></svg>
+              View Photos
+            </a>
+            <a href="https://www.instagram.com/reel/DR4ad3uExcX/" target="_blank" class="pcard-btn pcard-btn-reel">
+              <svg width="13" height="13" fill="none" viewBox="0 0 13 13"><rect x="1" y="1" width="11" height="11" rx="3" stroke="currentColor" stroke-width="1.2"/><circle cx="6.5" cy="6.5" r="2.2" stroke="currentColor" stroke-width="1.2"/><circle cx="9.5" cy="3.5" r=".7" fill="currentColor"/></svg>
+              View Reel
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. Srikanth - Signature Villa -->
+      <div class="pcard rev d2" data-sector="residential">
+        <div class="pcard-img">
+          <div class="pcard-img-bg" style="background-image:url('https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/jubilee%20hills.jpg')"></div>
+          <div class="pcard-img-ov"></div>
+          <span class="pcard-sector">Residential</span>
+          <div class="pcard-img-title">Signature Villa Project</div>
+          <div class="pcard-teal"></div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-meta">
+            <span class="pcard-tag">Railings</span>
+            <span class="pcard-tag">Mirrors</span>
+            <span class="pcard-location"><svg width="11" height="11" fill="none" viewBox="0 0 11 11"><circle cx="5.5" cy="4.5" r="1.8" stroke="currentColor" stroke-width="1"/><path d="M5.5 1C3.3 1 1.5 2.8 1.5 5c0 3.2 4 6 4 6s4-2.8 4-6C9.5 2.8 7.7 1 5.5 1z" stroke="currentColor" stroke-width="1"/></svg>Jubilee Hills</span>
+          </div>
+          <div class="pcard-arch">Architect: <span>Sudheer</span> — Sudheer Associates</div>
+          <p class="pcard-overview">Technorail glass railings with custom PVD finishes, laminated glass, handcrafted Indian teak handrails and bespoke metal-framed mirrors with matching PVD finishes.</p>
+          <div class="pcard-actions">
+            <a href="https://drive.google.com/drive/folders/1n_Q3vmsLBAb9clYkF2gw4I28egCxE7M2" target="_blank" class="pcard-btn pcard-btn-gallery">
+              <svg width="13" height="13" fill="none" viewBox="0 0 13 13"><rect x="1" y="1" width="11" height="11" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M1 5h11M5 5v7" stroke="currentColor" stroke-width="1.2"/></svg>
+              View Photos
+            </a>
+            <a href="https://www.instagram.com/reel/DO5Sff4E3c5/" target="_blank" class="pcard-btn pcard-btn-reel">
+              <svg width="13" height="13" fill="none" viewBox="0 0 13 13"><rect x="1" y="1" width="11" height="11" rx="3" stroke="currentColor" stroke-width="1.2"/><circle cx="6.5" cy="6.5" r="2.2" stroke="currentColor" stroke-width="1.2"/><circle cx="9.5" cy="3.5" r=".7" fill="currentColor"/></svg>
+              View Reel
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. Rishab - Private Villa Retreat -->
+      <div class="pcard rev d3" data-sector="residential">
+        <div class="pcard-img">
+          <div class="pcard-img-bg" style="background-image:url('https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/bandlaguda.JPG')"></div>
+          <div class="pcard-img-ov"></div>
+          <span class="pcard-sector">Residential</span>
+          <div class="pcard-img-title">Private Villa Retreat</div>
+          <div class="pcard-teal"></div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-meta">
+            <span class="pcard-tag">Doors</span>
+            <span class="pcard-tag">Railings</span>
+            <span class="pcard-tag">Mirrors</span>
+            <span class="pcard-tag">Shower Cubicles</span>
+            <span class="pcard-location"><svg width="11" height="11" fill="none" viewBox="0 0 11 11"><circle cx="5.5" cy="4.5" r="1.8" stroke="currentColor" stroke-width="1"/><path d="M5.5 1C3.3 1 1.5 2.8 1.5 5c0 3.2 4 6 4 6s4-2.8 4-6C9.5 2.8 7.7 1 5.5 1z" stroke="currentColor" stroke-width="1"/></svg>Bandlaguda</span>
+          </div>
+          <div class="pcard-arch">Firm: <span>Span Surat</span></div>
+          <p class="pcard-overview">Complete bespoke glass solutions across the residence: Technorail railings with bronze PVD finishes, extra-clear glass, custom timber handrails, framed shower cubicles and fabric-laminated pooja doors.</p>
+          <div class="pcard-actions">
+            <a href="https://drive.google.com/drive/folders/1dRUf2hC6GoGtkzJp_gA1ZboXWtUMxeOe" target="_blank" class="pcard-btn pcard-btn-gallery">
+              <svg width="13" height="13" fill="none" viewBox="0 0 13 13"><rect x="1" y="1" width="11" height="11" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M1 5h11M5 5v7" stroke="currentColor" stroke-width="1.2"/></svg>
+              View Photos
+            </a>
+            <a href="https://www.instagram.com/reel/DRuFECikwd5/" target="_blank" class="pcard-btn pcard-btn-reel">
+              <svg width="13" height="13" fill="none" viewBox="0 0 13 13"><rect x="1" y="1" width="11" height="11" rx="3" stroke="currentColor" stroke-width="1.2"/><circle cx="6.5" cy="6.5" r="2.2" stroke="currentColor" stroke-width="1.2"/><circle cx="9.5" cy="3.5" r=".7" fill="currentColor"/></svg>
+              View Reel
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10. Vijay - The Modern Residence -->
+      <div class="pcard rev d1" data-sector="residential">
+        <div class="pcard-img">
+          <div class="pcard-img-bg" style="background-image:url('https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/tirumulgiri.jpg')"></div>
+          <div class="pcard-img-ov"></div>
+          <span class="pcard-sector">Residential</span>
+          <div class="pcard-img-title">The Modern Residence</div>
+          <div class="pcard-teal"></div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-meta">
+            <span class="pcard-tag">Mirrors</span>
+            <span class="pcard-tag">Shower Cubicles</span>
+            <span class="pcard-tag">Custom Glass</span>
+            <span class="pcard-location"><svg width="11" height="11" fill="none" viewBox="0 0 11 11"><circle cx="5.5" cy="4.5" r="1.8" stroke="currentColor" stroke-width="1"/><path d="M5.5 1C3.3 1 1.5 2.8 1.5 5c0 3.2 4 6 4 6s4-2.8 4-6C9.5 2.8 7.7 1 5.5 1z" stroke="currentColor" stroke-width="1"/></svg>Tirumulgiri</span>
+          </div>
+          <div class="pcard-arch">Architect: <span>Vikas</span> — Daftary Architects</div>
+          <p class="pcard-overview">Bespoke mirrors, framed shower cubicles and decorative fabric glass installations tailored to each unique space within a contemporary residence.</p>
+          <div class="pcard-actions">
+            <a href="https://drive.google.com/drive/folders/1jW7_B9ZPB04FHds7W8XPoWTJ9_FnvWmd" target="_blank" class="pcard-btn pcard-btn-gallery">
+              <svg width="13" height="13" fill="none" viewBox="0 0 13 13"><rect x="1" y="1" width="11" height="11" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M1 5h11M5 5v7" stroke="currentColor" stroke-width="1.2"/></svg>
+              View Photos
+            </a>
+            <a href="https://www.instagram.com/reel/DYwolVooHIs/" target="_blank" class="pcard-btn pcard-btn-reel">
+              <svg width="13" height="13" fill="none" viewBox="0 0 13 13"><rect x="1" y="1" width="11" height="11" rx="3" stroke="currentColor" stroke-width="1.2"/><circle cx="6.5" cy="6.5" r="2.2" stroke="currentColor" stroke-width="1.2"/><circle cx="9.5" cy="3.5" r=".7" fill="currentColor"/></svg>
+              View Reel
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11. Karthik - Refined Villa Spaces -->
+      <div class="pcard rev d2" data-sector="residential">
+        <div class="pcard-img">
+          <div class="pcard-img-bg" style="background-image:url('https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/filmnagar.JPG')"></div>
+          <div class="pcard-img-ov"></div>
+          <span class="pcard-sector">Residential</span>
+          <div class="pcard-img-title">Refined Villa Spaces</div>
+          <div class="pcard-teal"></div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-meta">
+            <span class="pcard-tag">Railings</span>
+            <span class="pcard-tag">Mirrors</span>
+            <span class="pcard-tag">Partitions</span>
+            <span class="pcard-tag">Shower Cubicles</span>
+            <span class="pcard-location"><svg width="11" height="11" fill="none" viewBox="0 0 11 11"><circle cx="5.5" cy="4.5" r="1.8" stroke="currentColor" stroke-width="1"/><path d="M5.5 1C3.3 1 1.5 2.8 1.5 5c0 3.2 4 6 4 6s4-2.8 4-6C9.5 2.8 7.7 1 5.5 1z" stroke="currentColor" stroke-width="1"/></svg>Film Nagar</span>
+          </div>
+          <div class="pcard-arch">Architect: <span>Mounika</span></div>
+          <p class="pcard-overview">Antique and distressed mirrors, acid-etched patterns, leather-finish glass, fabric-laminated panels framed in Majestic Gold profiles, premium partitions and elegantly detailed shower cubicles.</p>
+          <div class="pcard-actions">
+            <a href="https://drive.google.com/drive/folders/1yjW8oNHkUxKMF4j6mHi5x1CizllT-uKN" target="_blank" class="pcard-btn pcard-btn-gallery">
+              <svg width="13" height="13" fill="none" viewBox="0 0 13 13"><rect x="1" y="1" width="11" height="11" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M1 5h11M5 5v7" stroke="currentColor" stroke-width="1.2"/></svg>
+              View Photos
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 12. Surender Reddy - Timeless Villa -->
+      <div class="pcard rev d3" data-sector="residential">
+        <div class="pcard-img">
+          <div class="pcard-img-bg" style="background-image:url('https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Bowenpally.JPG')"></div>
+          <div class="pcard-img-ov"></div>
+          <span class="pcard-sector">Residential</span>
+          <div class="pcard-img-title">Timeless Villa Design</div>
+          <div class="pcard-teal"></div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-meta">
+            <span class="pcard-tag">Doors</span>
+            <span class="pcard-tag">Railings</span>
+            <span class="pcard-tag">Mirrors</span>
+            <span class="pcard-tag">Partitions</span>
+            <span class="pcard-location"><svg width="11" height="11" fill="none" viewBox="0 0 11 11"><circle cx="5.5" cy="4.5" r="1.8" stroke="currentColor" stroke-width="1"/><path d="M5.5 1C3.3 1 1.5 2.8 1.5 5c0 3.2 4 6 4 6s4-2.8 4-6C9.5 2.8 7.7 1 5.5 1z" stroke="currentColor" stroke-width="1"/></svg>Bowenpally</span>
+          </div>
+          <div class="pcard-arch">Complete Residential Package</div>
+          <p class="pcard-overview">Full-range glass solution across the residence: premium glass doors, railing systems, interior partitions, framed shower cubicles, bespoke mirrors and custom glass, all with a consistent design language.</p>
+          <div class="pcard-actions">
+            <a href="https://drive.google.com/drive/folders/11rkeSgqHUnhse7fy1J2ovn7LHbxbvR-M" target="_blank" class="pcard-btn pcard-btn-gallery">
+              <svg width="13" height="13" fill="none" viewBox="0 0 13 13"><rect x="1" y="1" width="11" height="11" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M1 5h11M5 5v7" stroke="currentColor" stroke-width="1.2"/></svg>
+              View Photos
+            </a>
+            <a href="https://www.instagram.com/reel/DbA87mJI1ls/" target="_blank" class="pcard-btn pcard-btn-reel">
+              <svg width="13" height="13" fill="none" viewBox="0 0 13 13"><rect x="1" y="1" width="11" height="11" rx="3" stroke="currentColor" stroke-width="1.2"/><circle cx="6.5" cy="6.5" r="2.2" stroke="currentColor" stroke-width="1.2"/><circle cx="9.5" cy="3.5" r=".7" fill="currentColor"/></svg>
+              View Reel
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="port-empty" id="pe">No projects found in this category.</div>
+  </div>
+</section>
+
+<section class="port-cta">
+  <div class="wrap port-cta-i">
+    <div class="rev">
+      <h2>Have a Project in Mind?</h2>
+      <p>Let's discuss how we can bring your vision to life.</p>
+    </div>
+    <a href="contact.html" class="btn-ws rev d2">Start a Conversation</a>
+  </div>
+</section>
+
+
+<!-- CATALOGUE DOWNLOAD -->
+<section style="background:var(--black);padding:64px 0;">
+  <div class="wrap">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;">
+      <div style="display:flex;align-items:center;gap:20px;">
+        <div style="width:60px;height:60px;background:var(--teal);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="28" height="28" fill="none" viewBox="0 0 28 28"><path d="M16 3H8a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" stroke="white" stroke-width="1.5" stroke-linecap="round"/><polyline points="16,3 16,9 22,9" stroke="white" stroke-width="1.5" stroke-linecap="round"/><line x1="18" y1="15" x2="10" y2="15" stroke="white" stroke-width="1.5" stroke-linecap="round"/><line x1="18" y1="19" x2="10" y2="19" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:6px;">Product Catalogue</div>
+          <div style="font-family:var(--fm);font-size:18px;font-weight:400;color:var(--white);margin-bottom:4px;">DG Completed Works</div>
+          <div style="font-size:13px;color:rgba(255,255,255,.45);">Portfolio of completed residential and commercial projects</div>
+        </div>
+      </div>
+      <a href="https://drive.google.com/uc?export=download&id=1mP1WmIP-auh0SJ1ARCwlKCfFi0mBesfT" target="_blank"
+         style="display:inline-flex;align-items:center;gap:10px;background:var(--white);color:var(--black);font-family:var(--fb);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:14px 28px;transition:all .22s;flex-shrink:0;text-decoration:none;"
+         onmouseover="this.style.background='#458895';this.style.color='white'"
+         onmouseout="this.style.background='white';this.style.color='#0A0A0A'">
+        <svg width="16" height="16" fill="none" viewBox="0 0 16 16"><path d="M8 2v8M4.5 7l3.5 3.5L11.5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M2 12h12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        Download PDF
+      </a>
+    </div>
+  </div>
+</section>
+<footer id="ft">
+  <div class="wrap">
+    <div class="ftg">
+      <div><img class="fli" src="https://cdn.jsdelivr.net/gh/deepaklogidiog/domestic-glass@main/images/Domestic_glass_Logo__1_.png" alt="Domestic Glass" onerror="this.style.display='none'"/><p class="ftag">Designing, fabricating, and installing custom glass solutions across India since 1991.</p></div>
+      <div class="fc"><h4>Solutions</h4><ul><li><a href="windows-doors.html">Windows</a></li><li><a href="railings.html">Railings</a></li><li><a href="partitions.html">Partitions and Doors</a></li><li><a href="shower-cubicles.html">Shower Cubicles</a></li><li><a href="mirrors.html">Mirrors</a></li></ul></div>
+      <div class="fc"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="architects.html">Architects</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="fc"><h4>Contact</h4><div class="fci"><a href="tel:+919553371114" class="fca">+91 95533 71114</a><a href="mailto:info@domesticglass.in" class="fca">info@domesticglass.in</a><span class="fca" style="cursor:default;">Hyderabad, Telangana</span></div></div>
+    </div>
+    <div class="fbb"><p class="fbcp">2025 Domestic Glass. All rights reserved.</p><div class="fbl"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a></div></div>
+  </div>
+</footer>
+
+<script>
+const hdr=document.getElementById('hdr');
+window.addEventListener('scroll',()=>hdr.classList.toggle('sc',window.scrollY>20));
+const hbg=document.getElementById('hbg'),mob=document.getElementById('mob');
+hbg.addEventListener('click',()=>{hbg.classList.toggle('op');mob.classList.toggle('op');});
+
+// Filter
+function pfilt(btn,sector){
+  document.querySelectorAll('.pt').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  const cards=document.querySelectorAll('.pcard');
+  let count=0;
+  cards.forEach(c=>{
+    const show=sector==='all'||c.dataset.sector===sector;
+    c.style.display=show?'flex':'none';
+    if(show)count++;
+  });
+  document.getElementById('pe').classList.toggle('on',count===0);
+}
+
+// Reveal
+const ro=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -20px 0px'});
+document.querySelectorAll('.rev').forEach(el=>ro.observe(el));
+document.querySelectorAll('.ph .rev').forEach(el=>el.classList.add('on'));
+</script>
+</body>
+</html>
